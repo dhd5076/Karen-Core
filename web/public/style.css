@@ -1,0 +1,16 @@
+html, body {
+    height:100%;
+}
+
+.fill-parent {
+    height:100%;
+}
+
+.sidebar {
+    border-right: 1px solid #111;
+}
+
+h1 {
+    width:100%;
+    border-bottom: 1px solid #111;
+}

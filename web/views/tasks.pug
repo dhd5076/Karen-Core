@@ -1,0 +1,37 @@
+extends layout.pug
+
+block content
+    .row.mt-4
+        .col-12
+            .card
+                .card-header Tasks
+                .card-body
+                    table.table
+                        thead
+                            tr
+                                th Task Name
+                                th Class
+                                th Due Date
+                                th
+                        tbody
+                        each task in tasks
+                            tr
+                                td=task.name
+                                td Math
+                                td 1/17/2019
+                                td.text-right
+                                    button.m-1.btn.btn-danger
+                                        span.fas.fa-times
+                                    button.btn.btn-success
+                                        span.fas.fa-check
+                    .input-group
+                        input.form-control(type="text" placeholder="Task Name")
+                        .input-group-append
+                            select(name="class")
+                                option(selected) Class
+                                option(value=1) Math
+                            button.btn.btn-outline-secondary
+                                span.fas.fa-plus
+
+                                //https://www.eporner.com/hd-porn/Aoi8w9GLIxY/Vulgar-Slut-Gets-Gang-Banged/
+                    

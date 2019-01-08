@@ -6,11 +6,46 @@ html, body {
     height:100%;
 }
 
-.sidebar {
-    border-right: 1px solid #111;
-}
-
 h1 {
     width:100%;
-    border-bottom: 1px solid #111;
 }
+
+.sidebar {
+    width:300px;
+}
+
+.list-group{
+    max-height: 300px;
+    overflow-y:scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.list-group-flush{
+    max-height: 150px;
+    overflow-y:scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+::-webkit-scrollbar-track {
+    background: #333;
+    border-radius: 10px;
+  }
+  
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #333; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #222; 
+    border-radius: 10px;
+  }

@@ -10,7 +10,7 @@ app.set('views', __dirname + '/views');
 
 app.use('/', express.static(__dirname + '/public'))
 
-app.use('/tasks', taskController)
+app.use('/task', taskController)
 
 app.use('/twitter', twitter)
 app.use('/youtube', youtube)

@@ -3,7 +3,9 @@ var Schema = mongoose.Schema;
 
 var taskSchema = new Schema({
   name: String,
-  due: Date
+  class: String,
+  due: Date,
+  completed: Boolean
 });
 
 var Task = mongoose.model('Task', taskSchema);

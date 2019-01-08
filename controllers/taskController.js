@@ -4,27 +4,29 @@ var router = express.Router()
 
 router.get('/create', function(req, res) {
     var task = new Task({
-        name: 'This is the name of a task',
-        due: Date.now()
+        name: req.query.name,
+        class: req.query.class,
+        due: req.query.due_date,
+        completed: false
     });
-
     task.save();
-    res.send('true');
+    res.redirect('/task');
 });
 
 router.get('/delete/:id', function(req, res) {
     Task.findByIdAndRemove(req.params.id, function(err, task){
-        res.render('tasks')
+        res.redirect('/task');
     });
 });
 
-router.get('/edit/:id', function(req, res) {
-    var task = new Task({
-
+router.get('/complete/:id', function(req, res) {
+    Task.findById(req.params.id, function(err, task){
+        task.completed = true;
+        task.save();
+        res.redirect('/task');
     });
-
-    task.save();
 });
+
 
 router.get('/', function(req, res) {
     Task.find({}, function(err, tasks){

@@ -6,6 +6,12 @@ block content
             .card.bg-light
                 .card-header Games
                 .card-body
+                    form.col-12.mb-4(action="")
+                        .input-group
+                            input.form-control(placeholder="Search...")
+                            .input-group-append
+                                .input-group-text.bg-light
+                                        span.fas.fa-search
                     .row
                         for game in games
                             .card.p-0.col-4.mb-4

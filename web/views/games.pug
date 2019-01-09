@@ -1,0 +1,18 @@
+extends layout.pug
+
+block content
+    .row.mt-4
+        .col-12
+            .card.bg-light
+                .card-header Games
+                .card-body
+                    .row
+                        for game in games
+                            .card.p-0.col-4.mb-4
+                                img.card-img-top(src="http://cdn.akamai.steamstatic.com/steam/apps/" + game.appid + "/header.jpg")
+                                .card-body
+                                    .card-title=game.name
+                                    .card-text
+                                        a.btn.btn-primary.float-right.col-12(href="/games/play/" + game.appid) Play
+
+                                

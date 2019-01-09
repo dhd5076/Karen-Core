@@ -10,6 +10,12 @@ h1 {
     width:100%;
 }
 
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
 .table-fixed thead {
     width: 100%;
   }

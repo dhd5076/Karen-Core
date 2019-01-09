@@ -6,8 +6,8 @@ block content
             .card
                 .card-header Tasks
                 .card-body
-                    .card-deck
-                        .card.pb-4.m-4.col-12.col-lg-9
+                    .row
+                        .card.p-0.pb-4.col-12.col-lg-9.mb-4
                             .card-header To-Do
                             .table-wrapper
                                 table.table.table-fixed
@@ -19,14 +19,13 @@ block content
                                             th.col-2.text-center Actions
                                     each task in tasks
                                         if !task.completed
-                                            tr.d-flex
-                                                td.col-4=task.name
-                                                td.col-3=task.class
-                                                td.col-3 #{(task.due.getUTCMonth() + 1) + '/' + task.due.getUTCDate() + '/' + task.due.getFullYear()}
+                                                td.pt-4.col-4=task.name
+                                                td.pt-4.col-3=task.class
+                                                td.pt-4.col-3 #{(task.due.getUTCMonth() + 1) + '/' + task.due.getUTCDate() + '/' + task.due.getFullYear()}
                                                 td.col-2.text-right.text-center
-                                                    a.m-2.btn.btn-danger(href="/task/delete/" + task._id)
+                                                    a.m-2.btn.btn-sm.btn-danger(href="/task/delete/" + task._id)
                                                         span.fas.fa-times
-                                                    a.btn.btn-success(href="/task/complete/" + task._id)
+                                                    a.btn.btn-sm.btn-success(href="/task/complete/" + task._id)
                                                         span.fas.fa-check
                                 form.sticky-bottom(action="/task/create" method="GET")
                                     .form-row.mr-2
@@ -42,17 +41,18 @@ block content
                                             input.form-control(name="due_date" type="date" value=new Date().toISOString().substr(0, 10))
                                         .col-1
                                         .col-1
-                                            button.btn.btn-outline-secondary(type="submit")
+                                            button.btn.btn-sm.btn-outline-secondary(type="submit")
                                                     span.fas.fa-plus
-                        .card.pb-4.m-4.col-3
+                        .card.pb-4.p-0.col-12.col-lg-3
                             .card-header Recently Completed
                             .card-body
-                                ul.list-group
+                                table.table.table-fixed
                                     each task in tasks
                                         if task.completed
-                                            li.list-group-item=task.name
-                                                a.btn.btn-secondary.float-right(href="task/delete/" + task._id)
-                                                    span.fas.fa-times
+                                            tr 
+                                                td.col-12=task.name
+                                                    a.btn.btn-secondary.float-right(href="task/delete/" + task._id)
+                                                        span.fas.fa-times
                 .card-footer 
                     span.mr-2 Last updated #{new Date().toUTCString()}
                     button(onclick="location.reload()").btn.btn-sm.btn-primary Refresh

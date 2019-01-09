@@ -9,7 +9,7 @@ router.get('/', function(req, res){
     games = response.response.games.sort(function(game1, game2){
         return game2.playtime_forever - game1.playtime_forever
     });
-    res.render('games', {games: games});
+    res.render('pages/games', {games: games});
     });
  });
 

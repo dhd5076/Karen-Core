@@ -1,0 +1,40 @@
+extends ../layout.pug
+
+block content
+    .row.mt-4
+        .col-12
+            .card
+                .card-header Events
+                .card-body
+                    .card
+                        .card-header Today
+                        .card-body
+                            .row
+                                table.table.table-bordered
+                                    thead
+                                        tr.table-active
+                                            th Time
+                                            th Event
+                                            th Location
+                                    tbody
+                                        tr.table-danger
+                                            td 9:00am - 10:15am
+                                            td Math Lecture
+                                            td SWEN-234
+                                        tr.table-success
+                                            td 10:15am - 11:00am
+                                            td Break
+                                            td N/A
+                                        tr.table-danger
+                                            td 11:00am - 12:15am
+                                            td Break
+                                            td N/A
+
+                            
+                            .row
+                                .col-12
+                                    .btn.btn-primary
+                                        span.fas.fa-chevron-left
+                                    .btn.btn-primary.float-right
+                                        span.fas.fa-chevron-right
+

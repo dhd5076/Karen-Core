@@ -30,7 +30,10 @@ router.get('/complete/:id', function(req, res) {
 
 router.get('/', function(req, res) {
     Task.find({}, function(err, tasks){
-        res.render('tasks', {tasks: tasks})
+        res.render('tasks', {
+            tasks: tasks, 
+            nav: "tasks"
+        });
     }); 
 });
 

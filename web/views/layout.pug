@@ -8,8 +8,18 @@ html
         link(rel="stylesheet" href="/style.css")
     title Dashboard
     body
+        .row.bg-light.mb-4
+            .col-11(style="-webkit-app-region: drag")
+            .col-1
+                .btn-group.btn-group-sm.float-right
+                    button.btn.float-right(id="min-btn")
+                        span.fas.fa-window-minimize
+                    button.btn.float-right(id="max-btn")
+                        span.fas.fa-window-maximize
+                    button.btn.float-right(id="close-btn")
+                        span.fas.fa-window-close
         .container-fluid.fill-parent
-            .row.fill-parent
+            .row.fill-parent.pt-4
                 nav.col-1.mt-4.sidebar.fixed-top
                     ul.nav.nav-pills.flex-column.nav-fill.text-center
                         li.nav-item
@@ -25,7 +35,7 @@ html
                             a.nav-link(href="/events" class=(nav == 'events') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Events")
                                 span.fas.fa-calendar-day
                         li.nav-item
-                            a.nav-link(href="/notes" class=(nav == 'note') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Notes")
+                            a.nav-link(href="/notes" class=(nav == 'notes') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Notes")
                                 span.fas.fa-pencil-alt
                         li.nav-item
                             a.nav-link(href="/games" class=(nav == 'games') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Games")
@@ -34,7 +44,7 @@ html
                             a.nav-link(href="/gym" class=(nav == 'gym') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Workouts")
                                 span.fas.fa-dumbbell
                         li.nav-item
-                            a.nav-link(href="/contacts" class=(nav == 'gym') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Contacts")
+                            a.nav-link(href="/contacts" class=(nav == 'contacts') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Contacts")
                                 span.fas.fa-users
                         li.nav-item
                             a.nav-link(href="/private" class=(nav == 'private') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Private")
@@ -43,7 +53,7 @@ html
                             a.nav-link(href="/stocks" class=(nav == 'stocks') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Stocks")
                                 span.fas.fa-chart-line
                         li.nav-item
-                            a.nav-link(href="/api" class=(nav == 'api') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Documentation")
+                            a.nav-link(href="/docs" class=(nav == 'api') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Documentation")
                                 span.fas.fa-code
                         li.nav-item
                             a.nav-link(href="/settings" class=(nav == 'settings') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Settings")
@@ -53,7 +63,7 @@ html
                     block content
                         
                         
-        script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
+        script(src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js")
         script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous")
         script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous")
 

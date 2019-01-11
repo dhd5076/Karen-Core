@@ -3,7 +3,7 @@ var express = require('express');
 var router = express.Router()
 
 router.get('/', function(req, res) {
-    res.render('pages/classes')
+    res.render('pages/classes', {nav: "classes"})
 });
 
 module.exports = router

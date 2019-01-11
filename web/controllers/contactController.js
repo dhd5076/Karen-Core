@@ -15,7 +15,7 @@ router.get('/delete/:id', function(req, res) {
 });
 
 router.get('/', function(req, res) {
-    res.render('pages/contacts')
+    res.render('pages/contacts', {nav: 'contacts'})
 });
 
 module.exports = router

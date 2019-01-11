@@ -1,7 +1,6 @@
-html, body {
-    height:100%;
+body {
+    overflow: hidden;
 }
-
 .fill-parent {
     height:100%;
 }
@@ -33,6 +32,7 @@ h1 {
 }
 .sidebar {
     width:300px;
+    padding-top:70px;
 }
 
 .list-group{
@@ -50,24 +50,18 @@ h1 {
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
-    float:right;
-  }
-
-  /* Track */
-::-webkit-scrollbar-track {
-    background: #333;
-    border-radius: 10px;
+    margin:0px;
+    margin-top:30px;
   }
   
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #333; 
     border-radius: 10px;
   }
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: #222; 
+    background: #111; 
     border-radius: 10px;
   }

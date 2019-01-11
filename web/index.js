@@ -10,6 +10,6 @@ app.use('/', express.static(__dirname + '/public'))
 
 app.use('/', indexRouter);
 
-mongoose.connect('mongodb://localhost/dashboard');
+mongoose.connect('mongodb://localhost/dashboard', {useNewUrlParser: true});
 
 app.listen(3000);

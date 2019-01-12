@@ -1,10 +1,12 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var contactSchema = new Schema({
-    name: String
+var classSchema = new Schema({
+    name: String,
+    short_name: String,
+    schedule: Object
 });
 
-var Contact = mongoose.model('Contact', contactSchema);
+var Class = mongoose.model('Class', classSchema);
 
-module.exports = Contact
+module.exports = Class

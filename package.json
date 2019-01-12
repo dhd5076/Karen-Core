@@ -21,8 +21,13 @@
     "mongoose": "^5.4.2",
     "node-google-calendar": "^1.1.1",
     "node-notifier": "^5.3.0",
+    "pornhub": "0.0.5",
+    "pornhub-api": "0.0.1",
+    "pornsearch": "^2.4.3",
     "pug": "^2.0.3",
+    "redtube": "^2.0.3",
     "simple-youtube-api": "^5.1.1",
+    "source-map-support": "^0.5.9",
     "twitter": "^1.7.1",
     "youtube-api": "^2.0.10"
   },

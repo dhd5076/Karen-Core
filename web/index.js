@@ -7,6 +7,7 @@ app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
 
 app.use('/', express.static(__dirname + '/public'))
+app.use('/vids', express.static('I:/Videos/'))
 
 app.use('/', indexRouter);
 

@@ -6,3 +6,50 @@ block content
             .card
                 .card-header Classes
                 .card-body
+                    .row
+                        .card.p-0.pb-4.col-12.mb-4
+                            .table-wrapper
+                                table.table.table-fixed
+                                    thead
+                                        tr.d-flex
+                                            th.col-3 Class Name
+                                            th.col-2 Short
+                                            th.col-4 Schedule
+                                            th.col-1 Actions
+                                    each _class in classes
+                                        tr
+                                            td.pt-4.col-3=_class.name
+                                            td.pt-4.col-2=_class.short_name
+                                            td.pt-4.col-4=_class.schedule.toString()
+                                            td.pt-4.col-1.text-right.pr-1
+                                                a.btn.btn-sm.btn-danger( href="/classes/delete/" + _class._id) Drop
+                            form.sticky-bottom(action="/classes/create" method="GET")
+                                    .form-row.mr-2
+                                        .col-3
+                                            input.form-control(type="text" placeholder="Class Name" name="name")
+                                        .col-2
+                                            input.form-control(type="text" placeholder="Short Name" name="short_name")
+                                        .col-4
+                                            .form-check.form-check-inline
+                                                input.form-check-input(type="checkbox" name="sunday")
+                                                label.form-check-label Sun
+                                            .form-check.form-check-inline
+                                                input.form-check-input(type="checkbox" name="monday")
+                                                label.form-check-label Mon
+                                            .form-check.form-check-inline
+                                                input.form-check-input(type="checkbox" name="tuesday")
+                                                label.form-check-label Tue
+                                            .form-check.form-check-inline
+                                                input.form-check-input(type="checkbox" name="wednesday")
+                                                label.form-check-label Wed
+                                            .form-check.form-check-inline
+                                                input.form-check-input(type="checkbox" name="thursday")
+                                                label.form-check-label Thu
+                                            .form-check.form-check-inline
+                                                input.form-check-input(type="checkbox" name="friday")
+                                                label.form-check-label Fri
+                                            .form-check.form-check-inline
+                                                input.form-check-input(type="checkbox" name="saturday")
+                                                label.form-check-label Sat
+                                        .col-1.text-right
+                                            button.btn.btn-sm.btn-success(type="submit") Add Class

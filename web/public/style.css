@@ -9,6 +9,11 @@ h1 {
     width:100%;
 }
 
+.overflow {
+    overflow-y:scroll;
+    max-height: 75vh;
+}
+
 .vcenter {
     display: inline-block;
     vertical-align: middle;
@@ -17,7 +22,8 @@ h1 {
 
 .table-fixed thead {
     width: 100%;
-  }
+}
+
 .table-fixed tbody {
     max-height: 50vh;
     overflow-y: scroll;
@@ -36,7 +42,7 @@ h1 {
 }
 
 .list-group{
-    max-height: 300px;
+    max-height: 50vh;
     overflow-y:scroll;
     -webkit-overflow-scrolling: touch;
 }

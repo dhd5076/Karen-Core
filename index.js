@@ -12,7 +12,7 @@ function createWindow () {
     height: 1080,
     width: 1920,
     icon: path.join(__dirname, 'utils/img/Icon.jpg'), 
-    frame: false,
+    frame: true,
     backgroundColor: "#000"
   });
 

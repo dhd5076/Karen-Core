@@ -35,8 +35,8 @@ block content
                                         .col-3
                                             select.custom-select(name="class")
                                                 option(selected) Class
-                                                option(value='Math') Math
-                                                option(value='Science') Science
+                                                each _class in classes
+                                                    option(value=_class.short_name)=_class.name
                                         .col-3
                                             input.form-control(name="due_date" type="date" value=new Date().toISOString().substr(0, 10))
                                         .col-1

@@ -15,6 +15,8 @@ router.get('/create', function(req, res) {
     var _class = new Class({
         name: req.query.name,
         short_name: req.query.short_name,
+        start_time: req.query.start_time,
+        end_time: req.query.end_time,
         schedule: {
             sunday: req.query.sunday == 'on',
             monday: req.query.monday == 'on',
@@ -23,8 +25,10 @@ router.get('/create', function(req, res) {
             thursday: req.query.thursday == 'on',
             friday: req.query.friday == 'on',
             saturday: req.query.saturday == 'on',
-        }
+        },
+        location: req.query.location
     });
+    console.log(req.query)
     _class.save();
     res.redirect('/classes');
 });

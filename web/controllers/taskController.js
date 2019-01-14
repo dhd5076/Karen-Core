@@ -1,4 +1,5 @@
 var Task = require('../models/task');
+var Class = require('../models/class')
 var express = require('express');
 var router = express.Router()
 
@@ -30,10 +31,13 @@ router.get('/complete/:id', function(req, res) {
 
 router.get('/', function(req, res) {
     Task.find({}, function(err, tasks){
-        res.render('tasks', {
-            tasks: tasks, 
-            nav: "tasks"
-        });
+        Class.find({}, function(err, classes) {
+            res.render('tasks', {
+                tasks: tasks,
+                classes: classes,
+                nav: "tasks"
+            });
+        })
     }); 
 });
 

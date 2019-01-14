@@ -13,3 +13,5 @@ $('#max-btn').on('click', e => {
 $('#close-btn').on('click', e => {
     remote.getCurrentWindow().close()
 })
+
+$('[data-toggle="tooltip"]').tooltip()

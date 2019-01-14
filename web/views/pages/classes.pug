@@ -2,7 +2,8 @@ extends ../layout.pug
 
 block content
     .row.mt-4
-        .col-12
+        .col-0.col-xl-1
+        .col-12.col-xl-10
             .card
                 .card-header Classes
                 .card-body
@@ -14,42 +15,77 @@ block content
                                         tr.d-flex
                                             th.col-3 Class Name
                                             th.col-2 Short
-                                            th.col-4 Schedule
-                                            th.col-1 Actions
+                                            th.col-2 Schedule
+                                            th.col-3 Location
+                                            th.col-2 Actions
                                     each _class in classes
                                         tr
                                             td.pt-4.col-3=_class.name
                                             td.pt-4.col-2=_class.short_name
-                                            td.pt-4.col-4=_class.schedule.toString()
-                                            td.pt-4.col-1.text-right.pr-1
+                                            td.pt-4.col-2
+                                                span=_class.start_time + '-' + _class.end_time + ' '
+                                                if _class.schedule.sunday
+                                                    span Sun
+                                                if _class.schedule.monday
+                                                    span Mon
+                                                if _class.schedule.tuesday
+                                                    span Tue
+                                                if _class.schedule.wednesday
+                                                    span Wed
+                                                if _class.schedule.thursday
+                                                    span Thu
+                                                if _class.schedule.friday
+                                                    span Fri
+                                                if _class.schedule.saturday
+                                                    span Sat
+                                            td.pt-4.col-3
+                                                span=_class.location
+                                            td.pt-4.col-1
                                                 a.btn.btn-sm.btn-danger( href="/classes/delete/" + _class._id) Drop
-                            form.sticky-bottom(action="/classes/create" method="GET")
-                                    .form-row.mr-2
-                                        .col-3
-                                            input.form-control(type="text" placeholder="Class Name" name="name")
-                                        .col-2
-                                            input.form-control(type="text" placeholder="Short Name" name="short_name")
-                                        .col-4
-                                            .form-check.form-check-inline
-                                                input.form-check-input(type="checkbox" name="sunday")
-                                                label.form-check-label Sun
-                                            .form-check.form-check-inline
-                                                input.form-check-input(type="checkbox" name="monday")
-                                                label.form-check-label Mon
-                                            .form-check.form-check-inline
-                                                input.form-check-input(type="checkbox" name="tuesday")
-                                                label.form-check-label Tue
-                                            .form-check.form-check-inline
-                                                input.form-check-input(type="checkbox" name="wednesday")
-                                                label.form-check-label Wed
-                                            .form-check.form-check-inline
-                                                input.form-check-input(type="checkbox" name="thursday")
-                                                label.form-check-label Thu
-                                            .form-check.form-check-inline
-                                                input.form-check-input(type="checkbox" name="friday")
-                                                label.form-check-label Fri
-                                            .form-check.form-check-inline
-                                                input.form-check-input(type="checkbox" name="saturday")
-                                                label.form-check-label Sat
-                                        .col-1.text-right
-                                            button.btn.btn-sm.btn-success(type="submit") Add Class
+                            .row
+                                .col-3
+                                .col-6
+                                    form.sticky-bottom.rounded.border.p-2.border-secondary(action="/classes/create" method="GET")
+                                        .form-row.col-12
+                                            h1.m-2 Add Class
+                                        .form-row.col-12.mb-2
+                                            .col-8
+                                                input.form-control(type="text" placeholder="Class Name" name="name")
+                                            .col-4
+                                                input.form-control(type="text" placeholder="Short Name" name="short_name")
+                                        .form-row.col-12.mb-2
+                                            .col-5
+                                                input.form-control(type="time" name="start_time" value="09:30")
+                                            .col-2.p-0.pr-0.text-center
+                                                i.fas.fa-minus
+                                            .col-5 
+                                                input.form-control(type="time" name="end_time" value="10:30")
+                                        .form-row.col-12.mb-2
+                                            .col-12.mr-0.pr-0
+                                                .form-check.form-check-inline
+                                                    input.form-check-input(type="checkbox" name="sunday")
+                                                    label.form-check-label Sun
+                                                .form-check.form-check-inline
+                                                    input.form-check-input(type="checkbox" name="monday")
+                                                    label.form-check-label Mon
+                                                .form-check.form-check-inline
+                                                    input.form-check-input(type="checkbox" name="tuesday")
+                                                    label.form-check-label Tue
+                                                .form-check.form-check-inline
+                                                    input.form-check-input(type="checkbox" name="wednesday")
+                                                    label.form-check-label Wed
+                                                .form-check.form-check-inline
+                                                    input.form-check-input(type="checkbox" name="thursday")
+                                                    label.form-check-label Thu
+                                                .form-check.form-check-inline
+                                                    input.form-check-input(type="checkbox" name="friday")
+                                                    label.form-check-label Fri
+                                                .form-check.form-check-inline
+                                                    input.form-check-input(type="checkbox" name="saturday")
+                                                    label.form-check-label Sat
+                                        .form-row.col-12
+                                            .col-12.mb-2
+                                                input.form-control(type="text" placeholder="Location" name="location")
+                                        .form-row.col-12.mb-2
+                                            .col-12
+                                                button.btn.col-12.btn-lg.btn-success(type="submit") Add

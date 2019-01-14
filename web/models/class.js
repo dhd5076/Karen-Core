@@ -4,7 +4,18 @@ var Schema = mongoose.Schema;
 var classSchema = new Schema({
     name: String,
     short_name: String,
-    schedule: Object
+    start_time: String,
+    end_time: String,
+    schedule: {
+        sunday: Boolean,
+        monday: Boolean,
+        tuesday: Boolean,
+        wednesday: Boolean,
+        thursday: Boolean,
+        friday: Boolean,
+        sunday: Boolean
+    },
+    location: String
 });
 
 var Class = mongoose.model('Class', classSchema);

@@ -48,8 +48,10 @@ block content
                                 table.table.table-fixed
                                     each task in tasks
                                         if task.completed
-                                            tr 
-                                                td.col-12=task.name
+                                            tr
+                                                td.col-10=task.name
+                                                    p.text-dark=task.class
+                                                td.col-2
                                                     a.btn.btn-secondary.float-right(href="task/delete/" + task._id)
                                                         span.fas.fa-times
                 .card-footer 

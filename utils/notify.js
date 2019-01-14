@@ -1,5 +1,6 @@
 const WindowsToaster = require('node-notifier').WindowsToaster;
 const path = require('path');
+const request = require('request');
 
 var notifier = new WindowsToaster({
     withFallback: false, // Fallback to Growl or Balloons? 
@@ -16,4 +17,10 @@ module.exports.Notify = function(message) {
     }, function(error, response) {
         console.log(response);
     });
+
+    request.post('https://api.pushover.net/1/messages.json', {form:{
+        token: 'azg7auj3ro31tqooevf6jorc4a317w',
+        user: 'uxtm4e3zxjjuwjrjv4na9tusxnakkc',
+        message: message
+    }});
 }

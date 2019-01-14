@@ -1,13 +1,12 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var taskSchema = new Schema({
-  name: String,
+var noteSchema = new Schema({
+  title: String,
   class: String,
-  due: Date,
-  completed: Boolean
+  name: String
 });
 
-var Task = mongoose.model('Task', taskSchema);
+var Note = mongoose.model('Note', noteSchema);
 
-module.exports = Task
+module.exports = Note

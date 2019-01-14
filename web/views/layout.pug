@@ -25,14 +25,14 @@ html
                         li.nav-item
                             a.nav-link(href="/" class=(nav == 'index') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Overview")
                                 span.fas.fa-tachometer-alt
-                        li.nav-item 
+                        li.nav-item
                             a.nav-link(href="/task" class=(nav == 'tasks') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Tasks")
                                 span.fas.fa-tasks
                         li.nav-item 
                             a.nav-link(href="/classes" class=(nav == 'classes') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Classes")
                                 span.fas.fa-school
-                        li.nav-item 
-                            a.nav-link(href="/events" class=(nav == 'events') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Events")
+                        li.nav-item.nav-danger 
+                            a.nav-link(href="/events" class=(nav == 'events') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Events" disabled)
                                 span.fas.fa-calendar-day
                         li.nav-item
                             a.nav-link(href="/notes" class=(nav == 'notes') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Notes")
@@ -47,7 +47,7 @@ html
                             a.nav-link(href="/contacts" class=(nav == 'contacts') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Contacts")
                                 span.fas.fa-users
                         li.nav-item
-                            a.nav-link(href="/private" class=(nav == 'private') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Private")
+                            a.nav-link.disabled(href="/private" class=(nav == 'private') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Private")
                                 span.fas.fa-user-secret
                         li.nav-item
                             a.nav-link(href="/stocks" class=(nav == 'stocks') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Stocks")

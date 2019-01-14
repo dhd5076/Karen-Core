@@ -26,6 +26,8 @@
     "pornsearch": "^2.4.3",
     "pug": "^2.0.3",
     "redtube": "^2.0.3",
+    "request": "^2.88.0",
+    "robinhood": "^1.6.4",
     "simple-youtube-api": "^5.1.1",
     "source-map-support": "^0.5.9",
     "twitter": "^1.7.1",

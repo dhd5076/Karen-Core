@@ -2,8 +2,7 @@ extends ../layout.pug
 
 block content
     .row.mt-4
-        .col-0.col-xl-1
-        .col-12.col-xl-10
+        .col-12
             .card
                 .card-header Classes
                 .card-body
@@ -15,14 +14,14 @@ block content
                                         tr.d-flex
                                             th.col-3 Class Name
                                             th.col-2 Short
-                                            th.col-2 Schedule
-                                            th.col-3 Location
-                                            th.col-2 Actions
+                                            th.col-4 Schedule
+                                            th.col-2 Location
+                                            th.col-1 Actions
                                     each _class in classes
                                         tr
                                             td.pt-4.col-3=_class.name
                                             td.pt-4.col-2=_class.short_name
-                                            td.pt-4.col-2
+                                            td.pt-4.col-4
                                                 span=_class.start_time + '-' + _class.end_time + ' '
                                                 if _class.schedule.sunday
                                                     span Sun
@@ -38,7 +37,7 @@ block content
                                                     span Fri
                                                 if _class.schedule.saturday
                                                     span Sat
-                                            td.pt-4.col-3
+                                            td.pt-4.col-2
                                                 span=_class.location
                                             td.pt-4.col-1
                                                 a.btn.btn-sm.btn-danger( href="/classes/delete/" + _class._id) Drop
@@ -47,7 +46,7 @@ block content
                                 .col-6
                                     form.sticky-bottom.rounded.border.p-2.border-secondary(action="/classes/create" method="GET")
                                         .form-row.col-12
-                                            h1.m-2 Add Class
+                                            h1.m-2.text-center Add Class
                                         .form-row.col-12.mb-2
                                             .col-8
                                                 input.form-control(type="text" placeholder="Class Name" name="name")

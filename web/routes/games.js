@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var getJSON = require('get-json')
 var exec = require('child_process').exec;
-var config = require('../../config');
+var config = require('../config');
 
 router.get('/', function(req, res){
     getJSON('http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=' + config.steam_api_key + '&steamid=76561198074397716/&format=json', function(error, response){ 

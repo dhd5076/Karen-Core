@@ -37,30 +37,30 @@ html
                         span.fas.fa-window-maximize
                     button.btn.float-right(id="close-btn")
                         span.fas.fa-window-close
-        .row.sticky-top.mt-4.mb-0
+        .row.sticky-top.mb-0
             .col-12
-                nav.navbar
+                nav.navbar.mt-4.bg-light
                     button.text-white.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbar")
                         span.fas.fa-bars
-                .collapse.navbar-collapse.ml-4(id="navbar")
-                    ul.navbar-nav.ml-4.text-left
-                        li.nav-item
-                            a.nav-link(href="/" class=(nav == 'index') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Overview") 
-                                h4 Overview
-                        li.nav-item.ml-2
-                    ul.navbar-nav.ml-4.text-left School
-                        li.nav-item.ml-2
-                            a.nav-link(href="/task" class=(nav == 'task') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Overview") Tasks
-                        li.nav-item.ml-2
-                            a.nav-link(href="/classes" class=(nav == 'index') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Overview") Classes
-                    ul.navbar-nav.ml-4.text-left Play
-                        li.nav-item.ml-2
-                            a.nav-link(href="/games" class=(nav == 'index') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Overview") Games
-                    ul.navbar-nav.ml-4.text-left Other
-                        li.nav-item
-                            a.nav-link.ml-2(href="/docs" class=(nav == 'docs') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Documentation") Documentation
-                        li.nav-item
-                            a.nav-link.ml-2(href="/settings" class=(nav == 'settings') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Settings") Settings
+                .collapse.navbar-collapse.bg-secondary.pl-4.col-12(id="navbar")
+                    .row.text-center
+                        ul.navbar-nav.col-12.col-md-4.my-2 School
+                            li.nav-item.ml-2
+                                a.nav-link(href="/task") Tasks
+                            li.nav-item.ml-2
+                                a.nav-link(href="/classes") Classes
+                            li.nav-item.ml-2
+                                a.nav-link(href="/notes") Notes
+                        ul.navbar-nav.col-12.col-md-4.my-2 Personal
+                            li.nav-item.ml-2
+                                a.nav-link(href="/games") Games
+                            li.nav-item.ml-2
+                                a.nav-link(href="/fitness") Fitness
+                        ul.navbar-nav.col-12.col-md-4.my-2 Other
+                            li.nav-item
+                                a.nav-link.ml-2(href="/docs") Documentation
+                            li.nav-item
+                                a.nav-link.ml-2(href="/settings") Settings
         .row.mt-0
             .col-0.col-lg-2
             .col-12.col-lg-8

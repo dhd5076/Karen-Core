@@ -32,7 +32,7 @@ router.get('/complete/:id', function(req, res) {
 router.get('/', function(req, res) {
     Task.find({}, function(err, tasks){
         Class.find({}, function(err, classes) {
-            res.render('tasks', {
+            res.render('pages/tasks', {
                 tasks: tasks,
                 classes: classes,
                 nav: "tasks"

@@ -12,11 +12,11 @@ function createWindow () {
     height: 1080,
     width: 1920,
     icon: path.join(__dirname, 'utils/img/Icon.jpg'), 
-    frame: true,
+    frame: false,
     backgroundColor: "#000"
   });
 
-  mainWindow.setMenu(null)
+  //mainWindow.setMenu(null)
 
   mainWindow.loadURL('http://localhost:3000')
 

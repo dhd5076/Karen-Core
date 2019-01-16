@@ -2,15 +2,34 @@
 html
     head
         meta(charset="utf-8")
-        meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
         link(rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.css")
         link(rel="stylesheet" href="/css/all.css")
         link(rel="stylesheet" href="/style.css")
-    title Dashboard
+
+        link(rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png")
+        link(rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png")
+        link(rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png")
+        link(rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png")
+        link(rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png")
+        link(rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png")
+        link(rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png")
+        link(rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png")
+        link(rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png")
+        link(rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png")
+        link(rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png")
+        link(rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png")
+        link(rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png")
+        link(rel="manifest" href="/manifest.json")
+        meta(name="msapplication-TileColor" content="#ffffff")
+        meta(name="msapplication-TileImage" content="/ms-icon-144x144.png")
+        meta(name="theme-color" content="#ffffff")
+    title
     body
-        .row.bg-light.mb-4
+        .row.bg-light.fixed-top.mb-4
             .col-11(style="-webkit-app-region: drag")
-            .col-1
+                span.ml-2 Karen
+            .col-1.float-right
                 .btn-group.btn-group-sm.float-right
                     button.btn.float-right(id="min-btn")
                         span.fas.fa-window-minimize
@@ -18,54 +37,39 @@ html
                         span.fas.fa-window-maximize
                     button.btn.float-right(id="close-btn")
                         span.fas.fa-window-close
-        .container-fluid.fill-parent
-            .row.fill-parent.pt-4
-                nav.col-1.mt-4.sidebar.fixed-top
-                    ul.nav.nav-pills.flex-column.nav-fill.text-center
+        .row.sticky-top.mt-4.mb-0
+            .col-12
+                nav.navbar
+                    button.text-white.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbar")
+                        span.fas.fa-bars
+                .collapse.navbar-collapse.ml-4(id="navbar")
+                    ul.navbar-nav.ml-4.text-left
                         li.nav-item
-                            a.nav-link(href="/" class=(nav == 'index') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Overview")
-                                span.fas.fa-tachometer-alt
+                            a.nav-link(href="/" class=(nav == 'index') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Overview") 
+                                h4 Overview
+                        li.nav-item.ml-2
+                    ul.navbar-nav.ml-4.text-left School
+                        li.nav-item.ml-2
+                            a.nav-link(href="/task" class=(nav == 'task') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Overview") Tasks
+                        li.nav-item.ml-2
+                            a.nav-link(href="/classes" class=(nav == 'index') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Overview") Classes
+                    ul.navbar-nav.ml-4.text-left Play
+                        li.nav-item.ml-2
+                            a.nav-link(href="/games" class=(nav == 'index') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Overview") Games
+                    ul.navbar-nav.ml-4.text-left Other
                         li.nav-item
-                            a.nav-link(href="/task" class=(nav == 'tasks') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Tasks")
-                                span.fas.fa-tasks
-                        li.nav-item 
-                            a.nav-link(href="/classes" class=(nav == 'classes') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Classes")
-                                span.fas.fa-school
-                        li.nav-item.nav-danger 
-                            a.nav-link(href="/events" class=(nav == 'events') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Events" disabled)
-                                span.fas.fa-calendar-day
+                            a.nav-link.ml-2(href="/docs" class=(nav == 'docs') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Documentation") Documentation
                         li.nav-item
-                            a.nav-link(href="/notes" class=(nav == 'notes') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Notes")
-                                span.fas.fa-pencil-alt
-                        li.nav-item
-                            a.nav-link(href="/games" class=(nav == 'games') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Games")
-                                span.fas.fa-gamepad
-                        li.nav-item
-                            a.nav-link(href="/gym" class=(nav == 'gym') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Workouts")
-                                span.fas.fa-dumbbell
-                        li.nav-item
-                            a.nav-link(href="/contacts" class=(nav == 'contacts') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Contacts")
-                                span.fas.fa-users
-                        li.nav-item
-                            a.nav-link.disabled(href="/private" class=(nav == 'private') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Private")
-                                span.fas.fa-user-secret
-                        li.nav-item
-                            a.nav-link(href="/stocks" class=(nav == 'stocks') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Stocks")
-                                span.fas.fa-chart-line
-                        li.nav-item
-                            a.nav-link(href="/docs" class=(nav == 'api') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Documentation")
-                                span.fas.fa-code
-                        li.nav-item
-                            a.nav-link(href="/settings" class=(nav == 'settings') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Settings")
-                                span.fas.fa-wrench
-                .col-1.mt-4
-                .col-11
+                            a.nav-link.ml-2(href="/settings" class=(nav == 'settings') ? 'active' : '' data-toggle="tooltip" data-placement="right" title="Settings") Settings
+        .row.mt-0
+            .col-0.col-lg-2
+            .col-12.col-lg-8
+                .card.mb-4
                     block content
-                        
                         
         script(src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js")
         script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous")
+        script(src="/main.js")
         script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous")
 
-        script(src="/main.js")
 

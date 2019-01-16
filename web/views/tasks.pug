@@ -1,62 +1,51 @@
 extends layout.pug
 
 block content
-    .row.mt-4
-        .col-12
-            .card
-                .card-header Tasks
-                .card-body
-                    .row
-                        .card.p-0.pb-4.col-12.col-lg-9.mb-4
-                            .card-header To-Do
-                            .table-wrapper
-                                table.table.table-fixed
-                                    thead
-                                        tr.d-flex
-                                            th.col-4 Task Name
-                                            th.col-3 Class
-                                            th.col-3 Due Date
-                                            th.col-2.text-center Actions
-                                    each task in tasks
-                                        if !task.completed
-                                                td.pt-4.col-4=task.name
-                                                td.pt-4.col-3=task.class
-                                                td.pt-4.col-3 #{(task.due.getUTCMonth() + 1) + '/' + task.due.getUTCDate() + '/' + task.due.getFullYear()}
-                                                td.col-2.text-right.text-center
-                                                    a.m-2.btn.btn-sm.btn-danger(href="/task/delete/" + task._id)
-                                                        span.fas.fa-times
-                                                    a.btn.btn-sm.btn-success(href="/task/complete/" + task._id)
-                                                        span.fas.fa-check
-                                form.sticky-bottom(action="/task/create" method="GET")
-                                    .form-row.mr-2
-                                        .col-4
-                                            .input-group
-                                                input.form-control(type="text" placeholder="Task Name" name="name")
-                                        .col-3
-                                            select.custom-select(name="class")
-                                                option(selected) Class
-                                                each _class in classes
-                                                    option(value=_class.short_name)=_class.name
-                                        .col-3
-                                            input.form-control(name="due_date" type="date" value=new Date().toISOString().substr(0, 10))
-                                        .col-1
-                                            button.btn.btn-sm.btn-outline-secondary(type="submit")
-                                                    span.fas.fa-plus
-                        .card.pb-4.p-0.col-12.col-lg-3
-                            .card-header Recently Completed
-                            .card-body
-                                table.table.table-fixed
-                                    each task in tasks
-                                        if task.completed
-                                            tr
-                                                td.col-10=task.name
-                                                    p.text-dark=task.class
-                                                td.col-2
-                                                    a.btn.btn-secondary.float-right(href="task/delete/" + task._id)
-                                                        span.fas.fa-times
-                .card-footer 
-                    span.mr-2 Last updated #{new Date().toUTCString()}
-                    button(onclick="location.reload()").btn.btn-sm.btn-primary Refresh
-                
-    //https://www.eporner.com/hd-porn/Aoi8w9GLIxY/Vulgar-Slut-Gets-Gang-Banged/
-                        
+    .card-header Tasks
+    .card-body
+        h4.mt-4 To-Do
+        table.table
+            thead
+                tr
+                    th Task Name
+                    th Class
+                    th Due Date
+                    th.text-center Actions
+            tbody
+                each task in tasks
+                    if !task.completed
+                        tr
+                            td.pt-4=task.name
+                            td.pt-4=task.class
+                            td.pt-4 #{(task.due.getUTCMonth() + 1) + '/' + task.due.getUTCDate() + '/' + task.due.getFullYear()}
+                            td.text-right.text-center
+                                a.m-2.btn.btn-sm.btn-danger(href="/task/delete/" + task._id)
+                                    span.fas.fa-times
+                                a.btn.btn-sm.btn-success(href="/task/complete/" + task._id)
+                                    span.fas.fa-check
+        form.mb-4.col-12(action="/task/create" method="GET")
+            .form-row
+                .col-12.mb-2
+                    .input-group
+                        input.form-control(type="text" placeholder="Task Name" name="name")
+                .col-6
+                    select.custom-select(name="class")
+                        option(selected) None
+                        each _class in classes
+                            option(value=_class.short_name)=_class.name
+                .col-5
+                    input.form-control(name="due_date" type="date" value=new Date().toISOString().substr(0, 10))
+                .col-1
+                    button.btn.btn-md.btn-secondary.col-12(type="submit")
+                            span.fas.fa-plus
+        h4.mt-4 Recently Completed
+        table.table.table-fixed
+                each task in tasks
+                    if task.completed
+                        tr
+                            td.col-10=task.name
+                                p.text-dark=task.class
+                            td.col-2
+                                a.btn.btn-secondary.float-right(href="task/delete/" + task._id)
+                                    span.fas.fa-times
+    

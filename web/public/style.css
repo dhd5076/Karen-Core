@@ -1,73 +1,27 @@
 body {
-    overflow: hidden;
-}
-.fill-parent {
-    height:100%;
-}
-
-h1 {
-    width:100%;
-}
-
-.overflow {
-    overflow-y:scroll;
-    max-height: 75vh;
-}
-
-.vcenter {
-    display: inline-block;
-    vertical-align: middle;
-    float: none;
-}
-
-.table-fixed thead {
-    width: 100%;
-}
-
-.table-fixed tbody {
-    max-height: 50vh;
+    overflow-x: hidden;
     overflow-y: scroll;
-    width: 100%;
 }
-.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
-    display: block;
-}
-.table-fixed tbody td, .table-fixed thead > tr> th {
-    float: left;
-    border-bottom-width: 0;
-}
-.sidebar {
-    width:300px;
-    padding-top:70px;
-}
-
-.list-group{
-    max-height: 50vh;
-    overflow-y:scroll;
-    -webkit-overflow-scrolling: touch;
-}
-
-.list-group-flush{
-    max-height: 150px;
-    overflow-y:scroll;
-    -webkit-overflow-scrolling: touch;
+.table-wrapper {
+    overflow-x: auto;
 }
 
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
-    margin:0px;
-    margin-top:30px;
   }
   
-
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+  
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
+    background: #888; 
   }
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: #111; 
-    border-radius: 10px;
+    background: #555; 
   }

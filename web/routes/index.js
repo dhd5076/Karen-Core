@@ -3,7 +3,6 @@ var router = express.Router();
 var twitter = require('../../backend/twitter');
 var youtube = require('../../backend/youtube');
 var games = require('./games');
-var private = require('./private');
 var settings = require('./settings');
 var stocks = require('./stocks');
 var events = require('./events')
@@ -18,7 +17,6 @@ router.use('/twitter', twitter)
 router.use('/youtube', youtube)
 
 router.use('/games', games);
-router.use('/private', private);
 router.use('/settings', settings);
 router.use('/stocks', stocks);
 router.use('/events', events);

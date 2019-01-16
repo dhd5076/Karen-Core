@@ -1,0 +1,26 @@
+{
+  "name": "karen-server",
+  "version": "0.5.0",
+  "description": "The backend for the karen application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dhd5076/Karen.git"
+  },
+  "author": "Dylan H Dunn <dhd5076@rit.edu>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dhd5076/Karen/issues"
+  },
+  "homepage": "https://github.com/dhd5076/Karen#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "get-json": "^1.0.1",
+    "mongoose": "^5.4.4",
+    "pug": "^2.0.3"
+  }
+}

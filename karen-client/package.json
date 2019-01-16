@@ -1,0 +1,30 @@
+{
+  "name": "karen-client",
+  "version": "0.5.0",
+  "description": "Client for the karen backend",
+  "main": "index.js",
+  "build": {
+    "appId": "karen"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dhd5076/Karen.git"
+  },
+  "author": "Dylan H Dunn <dhd5076@rit.edu>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dhd5076/Karen/issues"
+  },
+  "homepage": "https://github.com/dhd5076/Karen#readme",
+  "dependencies": {
+    "bootstrap": "^4.2.1",
+    "electron": "^4.0.1",
+    "jquery": "^3.3.1",
+    "node-notifier": "^5.3.0",
+    "request": "^2.88.0"
+  }
+}

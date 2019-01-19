@@ -6,6 +6,7 @@ var settings = require('./settings');
 var events = require('./events')
 var docs = require('./docs');
 var fitness = require('./fitness')
+var location = require('./location');
 
 var taskController = require('../controllers/taskController');
 var contactController = require('../controllers/contactController');
@@ -17,6 +18,7 @@ router.use('/games', games);
 router.use('/settings', settings);
 router.use('/events', events);
 router.use('/docs', docs)
+router.use('/location', location)
 
 router.use('/task', taskController)
 router.use('/contacts', contactController);

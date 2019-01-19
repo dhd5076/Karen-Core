@@ -18,9 +18,10 @@
   },
   "homepage": "https://github.com/dhd5076/Karen#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "get-json": "^1.0.1",
-    "mongoose": "^5.4.4",
+    "mongoose": "^5.4.5",
     "pug": "^2.0.3"
   }
 }

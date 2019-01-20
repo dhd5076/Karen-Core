@@ -4,7 +4,7 @@ html
         meta(charset="utf-8")
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
         link(rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.css")
-        link(rel="stylesheet" href="/css/all.css")
+        link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous")
         link(rel="stylesheet" href="/style.css")
 
         link(rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png")
@@ -42,27 +42,28 @@ html
                 nav.navbar.mt-4.bg-light
                     button.text-white.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbar")
                         span.fas.fa-bars
+                    a.btn.btn-danger(href="/logout") Logout
                 .collapse.navbar-collapse.bg-secondary.pl-4.col-12(id="navbar")
                     .row.text-center
                         ul.navbar-nav.col-12.col-md-4.my-2 School
                             li.nav-item.ml-2
-                                a.nav-link(href="/task") Tasks
+                                a.nav-link(href="/pages/task") Tasks
                             li.nav-item.ml-2
-                                a.nav-link(href="/classes") Classes
+                                a.nav-link(href="/pages/classes") Classes
                             li.nav-item.ml-2
-                                a.nav-link(href="/notes") Notes
+                                a.nav-link(href="/pages/notes") Notes
                         ul.navbar-nav.col-12.col-md-4.my-2 Personal
                             li.nav-item.ml-2
-                                a.nav-link(href="/games") Games
+                                a.nav-link(href="/pages/games") Games
                             li.nav-item.ml-2
-                                a.nav-link(href="/fitness") Fitness
+                                a.nav-link(href="/pages/fitness") Fitness
                             li.nav-item.ml-2
-                                a.nav-link(href="/spotify") Music
+                                a.nav-link(href="/pages/spotify") Music
                         ul.navbar-nav.col-12.col-md-4.my-2 Other
                             li.nav-item
-                                a.nav-link.ml-2(href="/docs") Documentation
+                                a.nav-link.ml-2(href="/pages/docs") Documentation
                             li.nav-item
-                                a.nav-link.ml-2(href="/settings") Settings
+                                a.nav-link.ml-2(href="/pages/settings") Settings
         .row.mt-0
             .col-0.col-lg-2
             .col-12.col-lg-8

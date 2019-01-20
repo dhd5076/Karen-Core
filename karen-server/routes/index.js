@@ -1,36 +1,43 @@
 var express = require('express');
 var router = express.Router();
+var config = require('../config');
 
-var games = require('./games');
-var settings = require('./settings');
-var events = require('./events')
-var docs = require('./docs');
-var fitness = require('./fitness')
-var location = require('./location');
-var spotify = require('./spotify');
-var discord = require('./discord');
+var pageRouter = require('./pages');
 
-var taskController = require('../controllers/taskController');
-var contactController = require('../controllers/contactController');
-var gymController = require('../controllers/workoutController');
-var noteController = require('../controllers/noteController');
-var classController = require('../controllers/classController');
+router.use('/pages', function(req, res, next) {
+    if(req.session.authed) {
+        next()
+    } else {
+        res.redirect('/');
+    }
+});
 
-router.use('/games', games);
-router.use('/settings', settings);
-router.use('/events', events);
-router.use('/docs', docs)
-router.use('/location', location)
-router.use('/spotify', spotify)
+router.use('/pages', pageRouter);
 
-router.use('/task', taskController)
-router.use('/contacts', contactController);
-router.use('/fitness', fitness)
-router.use('/notes', noteController)
-router.use('/classes', classController);
+router.get('/', function(req, res, next){
+    if(req.session.authed) {
+        res.redirect('/pages/dashboard');
+    } else {
+        res.render('index');
+    }
+ });
 
-router.get('/', function(req, res){
-    res.render("index", {nav: "index"});
+ router.get('/logout', function(req, res){
+    if(req.session.authed) {
+        req.session.authed = false;
+    }
+    res.render('index', {errmsg: 'Logged Out!'});
+ });
+
+ router.post('/', function(req, res) {
+    if(req.body.username == config.karen_creds.username &&
+        req.body.password == config.karen_creds.password) {
+            req.session.authed = true
+            req.session.save();
+            res.redirect('/');
+     } else {
+         res.render('index', {errmsg: 'Username or password were incorrect'});
+     }
  });
 
 module.exports = router;

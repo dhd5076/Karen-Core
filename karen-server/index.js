@@ -16,4 +16,4 @@ app.use('/', indexRouter);
 
 mongoose.connect('mongodb://localhost/dashboard', {useNewUrlParser: true});
 
-app.listen(3000);
+app.listen(80);

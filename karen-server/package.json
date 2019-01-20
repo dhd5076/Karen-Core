@@ -19,9 +19,14 @@
   "homepage": "https://github.com/dhd5076/Karen#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "certbot": "^1.0.0",
+    "csr-gen": "^0.2.1",
+    "discord-rich-presence": "0.0.7",
     "express": "^4.16.4",
     "get-json": "^1.0.1",
     "mongoose": "^5.4.5",
-    "pug": "^2.0.3"
+    "openssl": "^1.1.0",
+    "pug": "^2.0.3",
+    "spotify-web-api-node": "^4.0.0"
   }
 }

@@ -4,8 +4,8 @@ var express = require('express');
 var router = express.Router();
 
 var spotifyApi = new SpotifyWebApi({
-    clientId: 'fcecfc72172e4cd267473117a17cbd4d',
-    clientSecret: 'a6338157c9bb5ac9c71924cb2940e1a7',
+    clientId: config.spotify_clientID,
+    clientSecret: config.spotify_secret,
     redirectUri: 'karen.host/spotify/callback'
   });
 
@@ -15,13 +15,47 @@ router.get('/play', function(req, res){
     spotifyApi.play({
     })
     .then(function(data) {
-      // Output items
-      console.log("Now Playing: ",data.body);
       res.send('True');
     }, function(err) {
-      console.log('Something went wrong!', err);
+      res.send('False')
+      
+      console.log(err);
+    });
+});
+
+router.get('/pause', function(req, res){
+    spotifyApi.pause({
+    })
+    .then(function() {
+      res.send('True');
+    }, function(err) {
       res.send('False')
     });
- });
+});
+
+router.get('/getCurrentState', function(req, res){
+    spotifyApi.getMyCurrentPlaybackState({
+    })
+    .then(function(data) {
+      res.send(data.body);
+    }, function(err) {2
+      res.send('False')
+    });
+});
+
+router.get('/getCurrentTrack', function(req, res){
+    spotifyApi.getMyCurrentPlayingTrack({
+    })
+    .then(function(data) {
+      res.send(data.body);
+    }, function(err) {
+      res.send('False')
+    });
+});
+
+router.get('/', function(req, res){
+    res.render('pages/music.pug');
+});
+
 
 module.exports = router;

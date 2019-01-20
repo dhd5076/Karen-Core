@@ -4,4 +4,4 @@ client.updatePresence({
     details: 'Serving',
     largeImageKey: 'karen',
     instance: true,
-  });
+});

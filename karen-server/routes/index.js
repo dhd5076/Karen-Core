@@ -7,6 +7,8 @@ var events = require('./events')
 var docs = require('./docs');
 var fitness = require('./fitness')
 var location = require('./location');
+var spotify = require('./spotify');
+var discord = require('./discord');
 
 var taskController = require('../controllers/taskController');
 var contactController = require('../controllers/contactController');
@@ -19,6 +21,7 @@ router.use('/settings', settings);
 router.use('/events', events);
 router.use('/docs', docs)
 router.use('/location', location)
+router.use('/spotify', spotify)
 
 router.use('/task', taskController)
 router.use('/contacts', contactController);

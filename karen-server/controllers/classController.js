@@ -34,7 +34,7 @@ router.get('/create', function(req, res) {
     });
     console.log(req.query)
     _class.save();
-    res.redirect('/classes');
+    res.redirect('/pages/classes');
 });
 
 router.get('/delete/:id', function(req, res) {

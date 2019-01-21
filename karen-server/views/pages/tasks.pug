@@ -23,7 +23,7 @@ block content
                                     span.fas.fa-times
                                 a.btn.btn-sm.btn-success(href="/task/complete/" + task._id)
                                     span.fas.fa-check
-        form.mb-4.col-12(action="/task/create" method="GET")
+        form.mb-4.col-12(action="/pages/task/create" method="GET")
             .form-row
                 .col-12.mb-2
                     .input-group
@@ -46,6 +46,6 @@ block content
                             td.col-10=task.name
                                 p.text-dark=task.class
                             td.col-2
-                                a.btn.btn-secondary.float-right(href="task/delete/" + task._id)
+                                a.btn.btn-secondary.float-right(href="/pages/task/delete/" + task._id)
                                     span.fas.fa-times
     

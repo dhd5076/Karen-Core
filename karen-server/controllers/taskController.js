@@ -11,7 +11,7 @@ router.get('/create', function(req, res) {
         completed: false
     });
     task.save();
-    res.redirect('/task');
+    res.redirect('/pages/task');
 });
 
 router.get('/delete/:id', function(req, res) {

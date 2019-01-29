@@ -1,25 +1,26 @@
 var express = require('express');
 var router = express.Router();
-var config = require('../config');
 
-var pageRouter = require('./pages');
+var config = require('../config')
+var docs = require('./docs');
 
-router.use('/pages', function(req, res, next) {
-    if(req.session.authed) {
-        next()
-    } else {
-        res.redirect('/');
-    }
+var taskController = require('../controllers/taskController');
+var noteController = require('../controllers/noteController');
+var classController = require('../controllers/classController');
+
+router.use('/docs', docs)
+
+router.use('/tasks', taskController)
+router.use('/notes', noteController)
+router.use('/classes', classController);
+
+//TODO: Make Controller
+router.get('/dashboard', function(req, res){
+    res.render('dashboard');
 });
 
-router.use('/pages', pageRouter);
-
 router.get('/', function(req, res, next){
-    if(req.session.authed) {
-        res.redirect('/pages/dashboard');
-    } else {
-        res.render('index');
-    }
+    res.render('index');
  });
 
  router.get('/logout', function(req, res){
@@ -34,7 +35,7 @@ router.get('/', function(req, res, next){
         req.body.password == config.karen_creds.password) {
             req.session.authed = true
             req.session.save();
-            res.redirect('/');
+            res.redirect('/dashboard');
      } else {
          res.render('index', {errmsg: 'Username or password were incorrect'});
      }

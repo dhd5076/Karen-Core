@@ -1,7 +1,6 @@
-extends ../layout.pug
+extends ./layout.pug
 
 block content
-    .card-header Tasks
     .card-body
         h4.mt-4 To-Do
         table.table
@@ -19,9 +18,9 @@ block content
                             td.pt-4=task.class
                             td.pt-4 #{(task.due.getUTCMonth() + 1) + '/' + task.due.getUTCDate() + '/' + task.due.getFullYear()}
                             td.text-right.text-center
-                                a.m-2.btn.btn-sm.btn-danger(href="/task/delete/" + task._id)
+                                a.m-2.btn.btn-sm.btn-danger(href="/pages/task/delete/" + task._id)
                                     span.fas.fa-times
-                                a.btn.btn-sm.btn-success(href="/task/complete/" + task._id)
+                                a.btn.btn-sm.btn-success(href="/pages/task/complete/" + task._id)
                                     span.fas.fa-check
         form.mb-4.col-12(action="/pages/task/create" method="GET")
             .form-row

@@ -26,44 +26,18 @@ html
         meta(name="theme-color" content="#ffffff")
     title
     body
-        .row.bg-light.fixed-top.mb-4
-            .col-11(style="-webkit-app-region: drag")
-                span.ml-2 Karen
-            .col-1.float-right
-                .btn-group.btn-group-sm.float-right
-                    button.btn.float-right(id="min-btn")
-                        span.fas.fa-window-minimize
-                    button.btn.float-right(id="max-btn")
-                        span.fas.fa-window-maximize
-                    button.btn.float-right(id="close-btn")
-                        span.fas.fa-window-close
         .row.sticky-top.mb-0
-            .col-12
-                nav.navbar.mt-4.bg-light
-                    button.text-white.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbar")
-                        span.fas.fa-bars
-                    a.btn.btn-danger(href="/logout") Logout
-                .collapse.navbar-collapse.bg-secondary.pl-4.col-12(id="navbar")
-                    .row.text-center
-                        ul.navbar-nav.col-12.col-md-4.my-2 School
-                            li.nav-item.ml-2
-                                a.nav-link(href="/pages/task") Tasks
-                            li.nav-item.ml-2
-                                a.nav-link(href="/pages/classes") Classes
-                            li.nav-item.ml-2
-                                a.nav-link(href="/pages/notes") Notes
-                        ul.navbar-nav.col-12.col-md-4.my-2 Personal
-                            li.nav-item.ml-2
-                                a.nav-link(href="/pages/games") Games
-                            li.nav-item.ml-2
-                                a.nav-link(href="/pages/fitness") Fitness
-                            li.nav-item.ml-2
-                                a.nav-link(href="/pages/spotify") Music
-                        ul.navbar-nav.col-12.col-md-4.my-2 Other
-                            li.nav-item
-                                a.nav-link.ml-2(href="/pages/docs") Documentation
-                            li.nav-item
-                                a.nav-link.ml-2(href="/pages/settings") Settings
+            .col-0.col-md-3
+            .col-12.col-md-6
+                nav.navbar.bg-light
+                    a.btn(href="/tasks")
+                        span.fas.fa-tasks 
+                    a.btn(href="/classes")
+                        span.fas.fa-chalkboard
+                    a.btn(href="/notes")
+                        span.fas.fa-edit
+                    a.btn.btn-danger(href="/logout") 
+                        span.fas.fa-lock
         .row.mt-0
             .col-0.col-lg-2
             .col-12.col-lg-8

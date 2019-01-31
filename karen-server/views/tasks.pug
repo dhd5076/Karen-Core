@@ -18,11 +18,11 @@ block content
                             td.pt-4=task.class
                             td.pt-4 #{(task.due.getUTCMonth() + 1) + '/' + task.due.getUTCDate() + '/' + task.due.getFullYear()}
                             td.text-right.text-center
-                                a.m-2.btn.btn-sm.btn-danger(href="/pages/task/delete/" + task._id)
+                                a.m-2.btn.btn-sm.btn-danger(href="/tasks/delete/" + task._id)
                                     span.fas.fa-times
-                                a.btn.btn-sm.btn-success(href="/pages/task/complete/" + task._id)
+                                a.btn.btn-sm.btn-success(href="/tasks/complete/" + task._id)
                                     span.fas.fa-check
-        form.mb-4.col-12(action="/pages/task/create" method="GET")
+        form.mb-4.col-12(action="/tasks/create" method="GET")
             .form-row
                 .col-12.mb-2
                     .input-group
@@ -45,6 +45,6 @@ block content
                             td.col-10=task.name
                                 p.text-dark=task.class
                             td.col-2
-                                a.btn.btn-secondary.float-right(href="/pages/task/delete/" + task._id)
+                                a.btn.btn-secondary.float-right(href="/tasks/delete/" + task._id)
                                     span.fas.fa-times
     

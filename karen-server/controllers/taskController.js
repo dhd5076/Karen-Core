@@ -11,12 +11,12 @@ router.get('/create', function(req, res) {
         completed: false
     });
     task.save();
-    res.redirect('/pages/task');
+    res.redirect('/task');
 });
 
 router.get('/delete/:id', function(req, res) {
     Task.findByIdAndRemove(req.params.id, function(err, task){
-        res.redirect('/task');
+        res.redirect('/tasks');
     });
 });
 
@@ -24,7 +24,7 @@ router.get('/complete/:id', function(req, res) {
     Task.findById(req.params.id, function(err, task){
         task.completed = true;
         task.save();
-        res.redirect('/task');
+        res.redirect('/tasks');
     });
 });
 
@@ -32,7 +32,7 @@ router.get('/complete/:id', function(req, res) {
 router.get('/', function(req, res) {
     Task.find({}, function(err, tasks){
         Class.find({}, function(err, classes) {
-            res.render('pages/tasks', {
+            res.render('tasks', {
                 tasks: tasks,
                 classes: classes,
                 nav: "tasks"

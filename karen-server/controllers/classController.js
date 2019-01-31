@@ -5,7 +5,7 @@ var router = express.Router()
 router.get('/', function(req, res) {
     Class.find({}, function(err, classes) {
         if(!req.query.json == '1') {
-            res.render('pages/classes', {
+            res.render('classes', {
                 nav: "classes",
                 classes: classes
             });
@@ -34,7 +34,7 @@ router.get('/create', function(req, res) {
     });
     console.log(req.query)
     _class.save();
-    res.redirect('/pages/classes');
+    res.redirect('/classes');
 });
 
 router.get('/delete/:id', function(req, res) {

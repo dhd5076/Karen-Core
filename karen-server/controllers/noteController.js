@@ -4,7 +4,7 @@ var router = express.Router()
 
 router.get('/', function(req, res) {
     Class.find({}, function(err, classes){
-        res.render('pages/notes', {
+        res.render('notes', {
             nav: "notes",
             classes: classes
         });  

@@ -20,14 +20,21 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "certbot": "^1.0.0",
+    "colors": "^1.4.0",
     "csr-gen": "^0.2.1",
+    "death": "^1.1.0",
     "discord-rich-presence": "0.0.7",
+    "discord.js": "^12.1.1",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "get-json": "^1.0.1",
     "mongoose": "^5.4.5",
+    "node-blink1": "^0.3.0",
     "openssl": "^1.1.0",
     "pug": "^2.0.3",
-    "spotify-web-api-node": "^4.0.0"
-  }
+    "request": "^2.88.2",
+    "spotify-web-api-node": "^4.0.0",
+    "weather-js": "^2.0.0"
+  },
+  "devDependencies": {}
 }

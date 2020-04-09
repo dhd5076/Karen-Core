@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-var apiRouter = require('./api');
+var historyRouter = require('./history');
 
-router.use('/api', apiRouter);
+router.use('/history', historyRouter);
 
 module.exports = router;

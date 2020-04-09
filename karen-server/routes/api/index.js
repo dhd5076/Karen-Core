@@ -6,6 +6,8 @@ var authRouter = require('./auth');
 var weatherRouter = require('./weather');
 var loggingRouter = require('./logging');
 var platformRouter = require('./platforms');
+var automationRouter = require('./automation');
+var ioRouter = require('./io');
 
 router.use('/auth', authRouter);
 router.use('/weather', weatherRouter);

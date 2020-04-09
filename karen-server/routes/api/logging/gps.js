@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 var colors = require('colors');
 
-router.get('/logURL', (req, res) => {
-    console.log(colors.grey("[Safari] Logged Website: " + req.query.URL));
+router.get('/logCords', (req, res) => {
+    console.log(colors.grey("[GPS] " + req.query.latitude + "," + req.query.longitude));
     res.send();
 });
 

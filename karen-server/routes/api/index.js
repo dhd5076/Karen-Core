@@ -7,15 +7,18 @@ var weatherRouter = require('./weather');
 var loggingRouter = require('./logging');
 var platformRouter = require('./platforms');
 var automationRouter = require('./automation');
-var ioRouter = require('./io');
+var networkRouter = require('./network');
+var statusRouter = require('./status');
+var dataRouter = require('./data');
 
 router.use('/auth', authRouter);
 router.use('/weather', weatherRouter);
 router.use('/logging', loggingRouter);
-router.use('/platforms', platformRouter)
+router.use('/platforms', platformRouter);
+router.use('/status', statusRouter);
 
 router.get('/ping', (req, res) => {
-    console.log(colors.grey("[Ping] From " + req.query.who))
+    console.log(colors.grey("[PING] From " + req.query.who))
     res.send('pong');
 });
 

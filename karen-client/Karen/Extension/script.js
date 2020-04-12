@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event) {
+    console.log("Karen Loaded");
     console.log(window.location.href);
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {

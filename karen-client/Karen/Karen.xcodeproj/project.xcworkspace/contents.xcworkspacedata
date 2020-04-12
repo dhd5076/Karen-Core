@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Karen.xcodeproj">
+      location = "group:../../../../../../Downloads/iconfinder_Essentials_waveform_sound_equalizer_mastering_5298777.png">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>

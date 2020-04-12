@@ -1,9 +1,45 @@
 var express = require('express');
 var router = express.Router(); 
 var request = require('request');
+var logger = require('../../../logger');
+var getTitleAtUrl = require('get-title-at-url');
+
+var statistics;
 
 router.get('/stats', function(req, res) {
-    res.send("Corona Endpoint");
+    res.send(statistics);
 });
 
+function updateStatistics() {
+    logger.log('Corona', 'Fetching statistics...')
+    getTitleAtUrl("https://www.worldometers.info/coronavirus/", function(pageTitle) {
+        pageTitle = pageTitle.split(' ');
+        statistics = {
+            total_cases: {
+                text: pageTitle[0],
+                integer: pageTitle[0].replace(/,/g, '')
+            },
+            total_deaths: {
+                text: pageTitle[3],
+                integer: pageTitle[0].replace(/,/g, '')
+            }
+        }
+        logger.log('Corona', 'Updated Statistics');
+    });
+}
+
 module.exports = router;
+
+module.exports.getStatus = function() {
+    var statusPromise = new Promise(function(resolve) {
+        resolve({
+            statistics: statistics
+        });
+    });
+    return statusPromise;
+}
+
+var minutes = 5;
+setInterval(updateStatistics, 1000 * 60 * minutes);
+
+updateStatistics();

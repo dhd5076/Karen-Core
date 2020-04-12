@@ -16,6 +16,7 @@ router.use('/weather', weatherRouter);
 router.use('/logging', loggingRouter);
 router.use('/platforms', platformRouter);
 router.use('/status', statusRouter);
+router.use('/data', dataRouter);
 
 router.get('/ping', (req, res) => {
     console.log(colors.grey("[PING] From " + req.query.who))

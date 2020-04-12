@@ -7,11 +7,14 @@ var session = require('express-session');
 var discordRouter = require('./routes/api/platforms/discord');
 var indexRouter = require('./routes/');
 var hueRouter = require('./routes/api/automation/hue');
-var torRouter = require('./routes/api/io/tor');
+var historyRouter = require('./routes/api/logging/history');
+var torRouter = require('./routes/api/network/tor');
+var spotifyRouter = require('./routes/api/platforms/spotify');
 var colors = require('colors');
 var fs = require('fs');
+var logger = require('./logger');
 
-console.log(colors.green('[KAREN] Starting up...'));
+logger.log('Karen', 'Starting up...');
 
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
@@ -31,9 +34,9 @@ app.use('/', indexRouter);
 
 mongoose.connect('mongodb://localhost/dashboard', {useNewUrlParser: true, useUnifiedTopology: true }, function(err) {
     if(!err) {
-        console.log(colors.green("[MONGODB] Established Connection To MongoDB."));
+        logger.log('MongoDB', "Connected To MongoDB Database");
     } else {
-        console.log(colors.red("[MONGODB] Failed To Establish A Connection To MongoDB."));
+        logger.error('MongoDB', 'Failed To Establish A Connection To MongoDB.');
     }
 });
 
@@ -45,19 +48,20 @@ https.createServer({
     cert: fs.readFileSync('server.cert')
   }, app)
   .listen(port, function () {
-    console.log(colors.green('[DISCORD] Connecting To Discord...'));
-    hueRouter.init()
-    torRouter.init()
+    logger.log('Discord','Connecting To Discord...');
+    hueRouter.init();
+    torRouter.init();
+    spotifyRouter.init();
     discordRouter.init(function(err) {
         if(err) {
-            console.log(colors.red('[DISCORD] Failed To Connect To Discord. | ' + err));
+            logger.error('Discord', 'Failed To Connect To Discord');
         } else {
-            console.log(colors.green('[DISCORD] Connected To Discord'));
-            console.log(colors.green('[EXPRESS] Karen Running On Port ' + port));
+            logger.log('Discord', 'Connected To Discord');
+            logger.log('Karen', 'Karen Running On Port ' + port);
         }
     });
   });
 
   app.listen(port2, () => {
-    console.log(colors.green('[EXPRESS] Karen Running On Port ' + port2));
+    logger.log('Karen', 'Karen Running On Port ' + port2);
   })

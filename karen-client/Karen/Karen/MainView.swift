@@ -9,7 +9,7 @@
 import Cocoa
 
 class MainView: NSViewController {
-    var pingURL = URL(string: "https://localhost/api/ping?who=MacOS%20Application")!
+    var pingURL = URL(string: "https://localhost/api/ping?who=Karen%20Desktop")!
     @IBOutlet weak var statusLabel: NSTextField!
     @IBOutlet weak var statusLight: NSImageView!
     

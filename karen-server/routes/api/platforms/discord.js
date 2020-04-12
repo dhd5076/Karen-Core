@@ -1,4 +1,5 @@
 var express = require('express');
+var logger = require('../../../logger');
 var router = express.Router();
 const Discord = require('discord.js');
 const client = new Discord.Client();
@@ -13,16 +14,16 @@ module.exports = router;
 
 module.exports.init = function(cb) {
     client.on('ready', () => {
-        console.log(colors.green(`[DISCORD] Logged in as ${client.user.tag}!`));
+        logger.log('Discord', 'Logged in as ' + client.user.tag);
     });
 
     client.on('message', msg => {
-        console.log(colors.grey("[DISCORD] "  + msg.member.nickname + " : " + msg.content));
+        logger.info(msg.member.nickname + " : " + msg.content);
     });
     try {
         client.login(config.discord_key);
     } catch {
-        console.log(colors.red('[DISCORD] Failed to connect to Discord'));
+        logger.error('Discord', 'Failed to connect to Discord');
     }
     cb();
 }

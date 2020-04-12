@@ -1,4 +1,5 @@
 var express = require('express');
+var logger = require('../../../logger');
 var router = express.Router();
 const colors = require('colors');
 const config = require('../../../config');
@@ -34,7 +35,7 @@ router.get('/pause', function(req, res) {
         res.send("Pausing Music...");
     })
     .catch((err) => {
-        console.log(colors.red("[SPOTIFY] Error while pausing music"))
+        logger.warn("Unable to pause music")
         console.log(err);
     });
 });
@@ -42,6 +43,6 @@ router.get('/pause', function(req, res) {
 module.exports = router;
 
 module.exports.init = function() {
-    console.log(colors.green("[SPOTIFY] Connecting To Spotify..."));
-    console.log(colors.yellow("[SPOTIFY] No Account Connected, Visit https://localhost/api/platforms/spotify/auth To Connect One"))
+    logger.log('Spotify', 'Connecting To Spotify...');
+    logger.warn('Spotify', 'No Account Connected, Visit https://localhost/api/platforms/spotify/auth To Connect One');
 }

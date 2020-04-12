@@ -29,6 +29,8 @@
 		9AAE1596243ED2E200528130 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AAE1595243ED2E200528130 /* Assets.xcassets */; };
 		9AAE1599243ED2E200528130 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AAE1597243ED2E200528130 /* LaunchScreen.storyboard */; };
 		9AAE159F243ED67D00528130 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AAE159E243ED67D00528130 /* MapKit.framework */; };
+		9AAE15A5243F83A200528130 /* Karen.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AAE15A4243F83A200528130 /* Karen.png */; };
+		9AAE15A8243F8B5F00528130 /* Karen-T.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AAE15A7243F8B5F00528130 /* Karen-T.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,7 +76,7 @@
 		9A260075243E8DE600F4553E /* Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Extension.entitlements; sourceTree = "<group>"; };
 		9A26007D243E909A00F4553E /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		9A26007F243E916B00F4553E /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		9AAE1585243ED2E000528130 /* Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AAE1585243ED2E000528130 /* Karen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Karen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AAE1587243ED2E000528130 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9AAE1589243ED2E000528130 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9AAE158B243ED2E000528130 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,8 @@
 		9AAE1598243ED2E200528130 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9AAE159A243ED2E200528130 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AAE159E243ED67D00528130 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.4.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
+		9AAE15A4243F83A200528130 /* Karen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Karen.png; path = ../../../../../../Downloads/Karen.png; sourceTree = "<group>"; };
+		9AAE15A7243F8B5F00528130 /* Karen-T.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Karen-T.png"; path = "../../../../../../Downloads/Karen-T.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,7 +134,7 @@
 			children = (
 				9A26004A243E8C9100F4553E /* Karen.app */,
 				9A260064243E8DE600F4553E /* Extension.appex */,
-				9AAE1585243ED2E000528130 /* Mobile.app */,
+				9AAE1585243ED2E000528130 /* Karen.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -138,6 +142,7 @@
 		9A26004C243E8C9100F4553E /* Karen */ = {
 			isa = PBXGroup;
 			children = (
+				9AAE15A7243F8B5F00528130 /* Karen-T.png */,
 				9A26004D243E8C9100F4553E /* AppDelegate.swift */,
 				9A26007F243E916B00F4553E /* MainView.swift */,
 				9A260054243E8C9300F4553E /* Assets.xcassets */,
@@ -176,6 +181,7 @@
 		9AAE1586243ED2E000528130 /* Mobile */ = {
 			isa = PBXGroup;
 			children = (
+				9AAE15A4243F83A200528130 /* Karen.png */,
 				9AAE1587243ED2E000528130 /* AppDelegate.swift */,
 				9AAE1589243ED2E000528130 /* SceneDelegate.swift */,
 				9AAE158B243ED2E000528130 /* FirstViewController.swift */,
@@ -242,7 +248,7 @@
 			);
 			name = Mobile;
 			productName = Mobile;
-			productReference = 9AAE1585243ED2E000528130 /* Mobile.app */;
+			productReference = 9AAE1585243ED2E000528130 /* Karen.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -291,6 +297,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AAE15A8243F8B5F00528130 /* Karen-T.png in Resources */,
 				9A260055243E8C9300F4553E /* Assets.xcassets in Resources */,
 				9A260058243E8C9300F4553E /* Main.storyboard in Resources */,
 			);
@@ -311,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AAE1599243ED2E200528130 /* LaunchScreen.storyboard in Resources */,
+				9AAE15A5243F83A200528130 /* Karen.png in Resources */,
 				9AAE1596243ED2E200528130 /* Assets.xcassets in Resources */,
 				9AAE1591243ED2E000528130 /* Main.storyboard in Resources */,
 			);
@@ -606,8 +614,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dylandunn.Mobile;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dylandunn.Karen.Mobile;
+				PRODUCT_NAME = Karen;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -626,8 +634,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dylandunn.Mobile;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dylandunn.Karen.Mobile;
+				PRODUCT_NAME = Karen;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

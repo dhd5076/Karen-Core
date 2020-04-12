@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var huejay = require('huejay');
 var colors = require('colors');
+var logger = require('../../../logger');
 
 module.exports = router;
 
@@ -9,24 +10,25 @@ var huejayClient;
 var isConnected;
 var hueLights;
 
+
 module.exports.init = function() {
-    console.log(colors.green("[HUE] Discovering Hue Bridges..."))
+    logger.log('Hue', 'Discovering Hue Bridges...');
     huejay.discover()
     .then(bridges => {
         isConnected = true;
         for (let bridge of bridges) {
-            console.log(colors.green("[HUE] Discovered Hue Bridge At IP: " + bridge.ip));
+            logger.log('Hue', 'Discovered Hue Bridge At IP: ' + bridge.ip);
 
             huejayClient = new huejay.Client({
                 host:     bridge.ip,
                 username: 'wbLt3DHBSoFb5Vq4DwrhDJxZJw0hnoN-2sDUkZYD'           
             });
 
-            console.log(colors.green("[HUE] Attempting To Connect To Hue Bridge..."));
+            logger.log('Hue', 'Attempting To Connect To Hue Bridge...');
             huejayClient.lights.getAll().then(lights => {
             hueLights = [];
             for(let light of lights) {
-                console.log(colors.green("[HUE] Found Light: ") + colors.green(light.name));
+                logger.log('Hue', 'Found Light: ' + light.name);
                 hueLights.push({
                     name: light.name
                 });
@@ -35,7 +37,7 @@ module.exports.init = function() {
     }
   })
   .catch(error => {
-    console.log(`[HUE] Failed To Find Bridges`);
+    logger.error('Hue', 'No bridges found');
     isConnected = false;
   });
 }

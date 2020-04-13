@@ -1,14 +1,11 @@
 var express = require('express');
 var logger = require('../../../logger');
+var inputRouter = require('../interface/input');
 var router = express.Router();
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const colors = require('colors');
 const config = require('../../../config');
-
-router.use('/test', function(req, res) {
-    console.log();
-});
 
 module.exports = router;
 
@@ -18,7 +15,12 @@ module.exports.init = function(cb) {
     });
 
     client.on('message', msg => {
-        logger.info(msg.member.nickname + " : " + msg.content);
+        if(!msg.author.bot) {
+            inputRouter.process(msg.content, function(response) {
+                msg.channel.send(response);
+            });
+            logger.info('Discord', msg.author.username + " : " + msg.content);
+        }
     });
     try {
         client.login(config.discord_key);

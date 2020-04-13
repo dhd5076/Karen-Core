@@ -23,4 +23,12 @@ function output(module, message) {
         colors.cyan(new Date(Date.now()).toLocaleString()) 
     +   colors.magenta(" [" + module + "] ") 
     +   message);
+
+    fs.appendFile('./logs/output.log', 
+    new Date(Date.now()).toLocaleString() +
+    " [" + module + "] " +
+    colors.stripColors(message) +
+    "\n", function(err) {
+
+    });
 }

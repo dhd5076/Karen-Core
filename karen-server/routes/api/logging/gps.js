@@ -1,15 +1,16 @@
 var express = require('express');
 var router = express.Router();
 var colors = require('colors');
+var logger = require('../../../logger');
 
 var currentLocation;
 
 router.get('/logCords', (req, res) => {
-    console.log(colors.grey("[GPS] " + req.query.latitude + "," + req.query.longitude));
     currentLocation = {
         latitude: req.query.latitude,
         longitude: req.query.longitude
     }
+    logger.info('GPS', currentLocation.latitude + ", " + currentLocation.longitude);
     res.send();
 });
 

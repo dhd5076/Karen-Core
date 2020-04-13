@@ -29,14 +29,13 @@ router.get('/authCB', function(req, res) {
 });
 
 router.get('/pause', function(req, res) {
-    console.log(colors.green("[SPOTIFY] Pausing Music..."));
+    console.log(colors.green('Spotify', "Pausing Music..."));
     spotifyApi.pause()
     .then(() => {
         res.send("Pausing Music...");
     })
     .catch((err) => {
-        logger.warn("Unable to pause music")
-        console.log(err);
+        logger.warn('Spotify', "Unable to pause music")
     });
 });
 

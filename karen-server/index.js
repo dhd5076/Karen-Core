@@ -10,9 +10,19 @@ var hueRouter = require('./routes/api/automation/hue');
 var historyRouter = require('./routes/api/logging/history');
 var torRouter = require('./routes/api/network/tor');
 var spotifyRouter = require('./routes/api/platforms/spotify');
+var redditRouter = require('./routes/api/platforms/reddit');
 var colors = require('colors');
 var fs = require('fs');
 var logger = require('./logger');
+
+console.log('\033[2J');
+var nameplate = '  _  __    \n' +
+                ' | |/ /__ _ _ _ ___ _ _ \n' +
+                ' | \' </ _` | \'_/ -_) \' \\\n' +
+                ' |_|\\\_\\\__,_|_| \___|_||_|\n' + 
+                '====================================='
+
+console.log(colors.green(nameplate));
 
 logger.log('Karen', 'Starting up...');
 
@@ -52,16 +62,17 @@ https.createServer({
     hueRouter.init();
     torRouter.init();
     spotifyRouter.init();
+    redditRouter.init();
     discordRouter.init(function(err) {
         if(err) {
             logger.error('Discord', 'Failed To Connect To Discord');
         } else {
             logger.log('Discord', 'Connected To Discord');
-            logger.log('Karen', 'Karen Running On Port ' + port);
+            logger.log('Express', 'Karen Running On Port ' + port);
         }
     });
   });
 
   app.listen(port2, () => {
-    logger.log('Karen', 'Karen Running On Port ' + port2);
+    logger.log('Express', 'Karen Running On Port ' + port2);
   })

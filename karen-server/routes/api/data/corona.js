@@ -11,7 +11,6 @@ router.get('/stats', function(req, res) {
 });
 
 function updateStatistics() {
-    logger.log('Corona', 'Fetching statistics...')
     getTitleAtUrl("https://www.worldometers.info/coronavirus/", function(pageTitle) {
         pageTitle = pageTitle.split(' ');
         statistics = {
@@ -24,7 +23,11 @@ function updateStatistics() {
                 integer: pageTitle[0].replace(/,/g, '')
             }
         }
-        logger.log('Corona', 'Updated Statistics');
+        logger.info('Corona',    'Updated Statistics: ' + 
+                                statistics.total_cases.text + 
+                                " Total Cases and "  + 
+                                statistics.total_deaths.text + 
+                                " Total Deaths");
     });
 }
 

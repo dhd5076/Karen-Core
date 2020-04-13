@@ -5,9 +5,10 @@ var gpsRouter = require('../logging/gps');
 var hueRouter = require('../automation/hue');
 var historyRouter = require('../logging/history');
 var coronaRouter = require('../data/corona');
+var logger = require('../../../logger');
 
 router.get("/current", (req, res) => {
-    console.log(colors.grey("[STATUS] Request From " + req.query.who));
+    logger.info('Status', "Request From " + req.query.who);
     var currentTime = Date.now();
 
     historyRouter.getStatus().then(function(historyStatus) {

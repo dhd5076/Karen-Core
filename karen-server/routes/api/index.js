@@ -11,12 +11,12 @@ var networkRouter = require('./network');
 var statusRouter = require('./status');
 var dataRouter = require('./data');
 
-router.use('/auth', authRouter);
 router.use('/weather', weatherRouter);
 router.use('/logging', loggingRouter);
 router.use('/platforms', platformRouter);
 router.use('/status', statusRouter);
 router.use('/data', dataRouter);
+router.use('/auth', authRouter);
 
 router.get('/ping', (req, res) => {
     console.log(colors.grey("[PING] From " + req.query.who))

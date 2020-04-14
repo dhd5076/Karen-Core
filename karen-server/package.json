@@ -45,6 +45,7 @@
     "reddit": "^1.0.3",
     "reddit-wrapper-v2": "^1.1.6",
     "request": "^2.88.2",
+    "socket.io": "^2.3.0",
     "spotify-web-api-node": "^4.0.0",
     "tor-request": "^3.1.0",
     "unirest": "^0.6.0",

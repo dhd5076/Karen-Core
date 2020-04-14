@@ -11,6 +11,10 @@ var historyRouter = require('./routes/api/logging/history');
 var torRouter = require('./routes/api/network/tor');
 var spotifyRouter = require('./routes/api/platforms/spotify');
 var redditRouter = require('./routes/api/platforms/reddit');
+var githubRouter = require('./routes/api/platforms/github');
+var pornRouter = require('./routes/api/data/porn');
+var instagramRouter = require('./routes/api/platforms/instagram');
+var inputRouter = require('./routes/api/interface/input');
 var colors = require('colors');
 var fs = require('fs');
 var logger = require('./logger');
@@ -63,6 +67,9 @@ https.createServer({
     torRouter.init();
     spotifyRouter.init();
     redditRouter.init();
+    pornRouter.init();
+    instagramRouter.init();
+    inputRouter.init();
     discordRouter.init(function(err) {
         if(err) {
             logger.error('Discord', 'Failed To Connect To Discord');

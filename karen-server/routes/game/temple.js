@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var io = require('socket.io')(255);
-var logger = require('../../../logger');
+var logger = require('../../utils/logger');
 
 var games = [];
 

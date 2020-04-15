@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var colors = require('colors');
-var gpsRouter = require('../logging/gps');
-var hueRouter = require('../automation/hue');
-var historyRouter = require('../logging/history');
-var coronaRouter = require('../data/corona');
-var logger = require('../../../logger');
+var gpsRouter = require('../event/gps');
+var hueRouter = require('./hue');
+var historyRouter = require('../event/websiteVisit');
+var coronaRouter = require('./corona');
+var logger = require('../../utils/logger');
 
 router.get("/current", (req, res) => {
     logger.info('Status', "Request From " + req.query.who);

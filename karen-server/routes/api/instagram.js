@@ -1,7 +1,7 @@
 const { Octokit } = require("@octokit/rest");
 var express = require('express');
 var router = express.Router();
-var logger = require('../../../logger');
+var logger = require('../../utils/logger');
 var instagram = require('instagram-private-api').IgApiClient;
 var ig = new instagram();
 

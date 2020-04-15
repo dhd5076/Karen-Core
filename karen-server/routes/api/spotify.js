@@ -1,47 +1,38 @@
+/**
+ * @file /spotify/ Router
+ */
+
 var express = require('express');
-var logger = require('../../../logger');
+var logger = require('../../utils/logger');
+var response = require('../../utils/response');
+var spotifyController = require('../../controllers/spotifyController');
+
 var router = express.Router();
-const colors = require('colors');
-const config = require('../../../config');
 
-var SpotifyWebApi = require('spotify-web-api-node');
-
-var spotifyApi = new SpotifyWebApi({
-    clientId: 'acd4167d626c4a25bc3124a5e1377c93',
-    clientSecret: '6e5f037af9be4b32aedaf303aa816177',
-    redirectUri: 'https://localhost/api/platforms/spotify/authCB'
-});
-
-router.get('/auth', function(req, res) {
-    var scopes = ['user-read-private', 'user-read-email', 'user-read-playback-state', 'user-read-currently-playing', 'app-remote-control', 'streaming', 'user-modify-playback-state']
-    state = 'some-state-of-my-choice';
-
-    res.redirect(spotifyApi.createAuthorizeURL(scopes, state));
-});
-
-router.get('/authCB', function(req, res) {
-    console.log(colors.green("[SPOTIFY] Authorized User Account Successfully"));
-    res.send("Authorized User Account Successfully");
-    spotifyApi.authorizationCodeGrant(req.query.code)
-    .then((data) => {
-        spotifyApi.setAccessToken(data.body['access_token']);
-    })
-});
-
-router.get('/pause', function(req, res) {
-    console.log(colors.green('Spotify', "Pausing Music..."));
-    spotifyApi.pause()
-    .then(() => {
-        res.send("Pausing Music...");
-    })
-    .catch((err) => {
-        logger.warn('Spotify', "Unable to pause music")
+// GET /spotify/addAccount
+router.get('/addAccount', function(req, res) {
+    spotifyController.getAuthURL().then(function(authURL){
+        res.redirect(authURL);
     });
 });
 
-module.exports = router;
+// GET /spotify/authCB
+router.get('/authorize', function(req, res) {
+    spotifyController.authorizeAccount(req.query.code)
+    .then(() => {
+        res.send(response.generate(null, null));
+    })
+    .catch(() => {
+        logger.error('Spotify', 'Unable to Authorize Account')
+    })
+});
 
-module.exports.init = function() {
-    logger.log('Spotify', 'Connecting To Spotify...');
-    logger.warn('Spotify', 'No Account Connected, Visit https://localhost/api/platforms/spotify/auth To Connect One');
-}
+// GET /spotify/pause
+router.get('/pause', function(req, res) {
+        spotifyController.pauseMusic()
+        .then(function() {
+            req.send(response.generate(null, null));
+        })
+});
+
+module.exports = router;

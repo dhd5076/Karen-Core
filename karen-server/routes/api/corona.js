@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router(); 
 var request = require('request');
-var logger = require('../../../logger');
+var logger = require('../../utils/logger');
 var getTitleAtUrl = require('get-title-at-url');
 
 var statistics;

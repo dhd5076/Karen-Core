@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var huejay = require('huejay');
 var colors = require('colors');
-var logger = require('../../../logger');
+var logger = require('../../utils/logger');
 
 module.exports = router;
 

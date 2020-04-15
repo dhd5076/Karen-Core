@@ -3,7 +3,7 @@ var router = express.Router();
 var colors = require('colors');
 var request = require('request');
 var reddit = require('reddit-wrapper-v2');
-var logger = require('../../../logger');
+var logger = require('../../utils/logger');
 
 var redditClient;
 var userInfo;

@@ -1,23 +1,17 @@
+/**
+ * @file Entry Point Of Application
+ */
 var express = require('express');
 var app = express();
 var https = require('https');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-var discordRouter = require('./routes/api/platforms/discord');
-var indexRouter = require('./routes/');
-var hueRouter = require('./routes/api/automation/hue');
-var historyRouter = require('./routes/api/logging/history');
-var torRouter = require('./routes/api/network/tor');
-var spotifyRouter = require('./routes/api/platforms/spotify');
-var redditRouter = require('./routes/api/platforms/reddit');
-var githubRouter = require('./routes/api/platforms/github');
-var pornRouter = require('./routes/api/data/porn');
-var instagramRouter = require('./routes/api/platforms/instagram');
-var inputRouter = require('./routes/api/interface/input');
+var moduleController = require('./controllers/moduleController');
+var indexRouter = require('./routes');
 var colors = require('colors');
 var fs = require('fs');
-var logger = require('./logger');
+var logger = require('./utils/logger');
 
 console.log('\033[2J');
 var nameplate = '  _  __    \n' +
@@ -62,24 +56,10 @@ https.createServer({
     cert: fs.readFileSync('server.cert')
   }, app)
   .listen(port, function () {
-    logger.log('Discord','Connecting To Discord...');
-    hueRouter.init();
-    torRouter.init();
-    spotifyRouter.init();
-    redditRouter.init();
-    pornRouter.init();
-    instagramRouter.init();
-    inputRouter.init();
-    discordRouter.init(function(err) {
-        if(err) {
-            logger.error('Discord', 'Failed To Connect To Discord');
-        } else {
-            logger.log('Discord', 'Connected To Discord');
-            logger.log('Express', 'Karen Running On Port ' + port);
-        }
-    });
   });
 
   app.listen(port2, () => {
     logger.log('Express', 'Karen Running On Port ' + port2);
-  })
+  });
+
+  moduleController.initializeControllers();

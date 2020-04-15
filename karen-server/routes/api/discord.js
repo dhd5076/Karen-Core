@@ -1,11 +1,11 @@
 var express = require('express');
-var logger = require('../../../utils/logger');
-var inputRouter = require('../interface/input');
+var logger = require('../../utils/logger');
+var inputRouter = require('./input');
 var router = express.Router();
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const colors = require('colors');
-const config = require('../../../config');
+const config = require('../../config');
 const GameSDK = require('discord-game');
 
 module.exports = router;

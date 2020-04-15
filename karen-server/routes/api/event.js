@@ -1,26 +1,15 @@
 var express = require('express');
 var router = express.Router();
 
+var eventController = require('../../models/event');
+
 var historyRouter = require('./websiteVisit');
 var gpsRouter = require('./gps');
 
 router.use('/history', historyRouter);
 router.use('/gps', gpsRouter);
 
-router.post('/', (req, res) => {
-    currentLocation = {
-        latitude: req.query.latitude,
-        longitude: req.query.longitude
-    }
-    logger.info('GPS', currentLocation.latitude + ", " + currentLocation.longitude);
-    res.send();
-});
-
-router.get('/visitedWebsite', (req, res) => {
-    logger.info('History', 'Logged Website: ' + req.query.URL);
-    lastHistoryItemLogged = req.query.URL;
-    res.send();
-});
+router.post('/', );
 
 module.exports = router;
 

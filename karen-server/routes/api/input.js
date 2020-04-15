@@ -1,5 +1,5 @@
 var express = require('express');
-var logger = require('../../../logger');
+var logger = require('../../../utils/logger');
 var router = express.Router();
 var fs = require('fs');
 

@@ -1,5 +1,5 @@
 var express = require('express');
-var logger = require('../../../logger');
+var logger = require('../../../utils/logger');
 var inputRouter = require('../interface/input');
 var router = express.Router();
 const Discord = require('discord.js');

@@ -4,7 +4,7 @@ var colors = require('colors');
 
 var authRouter = require('./auth');
 var weatherRouter = require('./weather');
-var loggingRouter = require('./logging');
+var eventRouter = require('./event');
 var platformRouter = require('./platforms');
 var automationRouter = require('./automation');
 var networkRouter = require('./network');
@@ -12,7 +12,7 @@ var statusRouter = require('./status');
 var dataRouter = require('./data');
 
 router.use('/weather', weatherRouter);
-router.use('/logging', loggingRouter);
+router.use('/event', eventRouter);
 router.use('/platforms', platformRouter);
 router.use('/status', statusRouter);
 router.use('/data', dataRouter);

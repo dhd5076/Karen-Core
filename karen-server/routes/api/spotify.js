@@ -9,15 +9,15 @@ var spotifyController = require('../../controllers/spotifyController');
 
 var router = express.Router();
 
-// GET /spotify/addAccount
-router.get('/addAccount', function(req, res) {
+// GET /api/spotify/addAccount
+router.get('/addAccount', (req, res) => {
     spotifyController.getAuthURL().then(function(authURL){
         res.redirect(authURL);
     });
 });
 
-// GET /spotify/authCB
-router.get('/authorize', function(req, res) {
+// GET /api/spotify/authCB
+router.get('/authorize', (req, res) => {
     spotifyController.authorizeAccount(req.query.code)
     .then(() => {
         res.send(response.generate(null, null));
@@ -27,11 +27,63 @@ router.get('/authorize', function(req, res) {
     })
 });
 
-// GET /spotify/pause
-router.get('/pause', function(req, res) {
+// GET /api/spotify/getPlaybackState
+router.get('/getPlaybackState', (req, res) => {
+    spotifyController.getPlaybackStatus()
+    .then((playbackState) => {
+        res.send(response.generate(playbackState, null));
+    })
+    .catch((error) => {
+        logger.error('Spotify', 'Error Trying To Get Playback State');
+        res.send(response.generate(null, new response.APIError(error.message)));
+    });
+});
+
+// POST /api/spotify/skipForward
+router.post('/skipForward', (req, res) => {
+    spotifyController.skipForward()
+    .then(() => {
+        res.send(response.generate(null, null));
+    })
+    .catch((error) => {
+        logger.error('Spotify', 'Error Trying To Skip To Next Song');
+        res.send(response.generate(null, new response.APIError(error.message)));
+    });
+});
+
+// POST /api/spotify/skipBackward
+router.post('/skipBackward', (req, res) => {
+    spotifyController.skipBackward()
+    .then(() => {
+        res.send(response.generate(null, null));
+    })
+    .catch((error) => {
+        logger.error('Spotify', 'Error Trying To Skip To Previous Song');
+        res.send(response.generate(null, new response.APIError(error.message)));
+    });
+});
+
+// POST /api/spotify/pause
+router.post('/pause', (req, res) => {
         spotifyController.pauseMusic()
-        .then(function() {
-            req.send(response.generate(null, null));
+        .then(() => {
+            res.send(response.generate(null, null));
+        })
+        .catch((error) => {
+            logger.error('Spotify', 'Error Trying To Pause Music ');
+            res.send(response.generate(null, new response.APIError(error.message)));
+        })
+});
+
+// POST /spotify/play
+router.post('/play', (req, res) => {
+    spotifyController.playMusic()
+        .then(() => {
+            res.send(response.generate(null, null));
+        })
+        .catch((error) => {
+            logger.error('Spotify', 'Error Trying To Play Music ');
+            res.send(response.generate(null, new response.APIError(error.message)));
         })
 });
 

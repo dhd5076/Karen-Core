@@ -13,7 +13,7 @@ var spotifyApi = new SpotifyWebApi({
 var logger = require('../utils/logger');
 
 /**
- * Get URL for authorizing spotify account
+ * Get URL For Authorizing Spotify Account
  */
 module.exports.getAuthURL = function() {
     var promise = new Promise((resolve, reject) => {
@@ -25,16 +25,19 @@ module.exports.getAuthURL = function() {
     return promise;
 }
 
+/**
+ * Authorize Spotify Application
+ * @param {String} code The Authentication Code Used For Obtaining Access Token
+ */
 module.exports.authorizeAccount = function(code) {
     var promise = new Promise((resolve, reject) => {
-        logger.log('Spotify', 'Authorized Account Successfully');
         spotifyApi.authorizationCodeGrant(code)
         .then((data) => {
             spotifyApi.setAccessToken(data.body['access_token']);
+            logger.log('Spotify', 'Authorized Account Successfully');
             resolve();
         })
-        .catch((error) => {
-            console.log(error);
+        .catch(() => {
             reject();
         });
     });
@@ -50,8 +53,8 @@ module.exports.pauseMusic = function() {
         .then(() => {
             resolve();
         })
-        .catch((err) => {
-            reject(err);
+        .catch((error) => {
+            reject(error);
         });
     })
     return promise;
@@ -60,15 +63,46 @@ module.exports.pauseMusic = function() {
 /**
  * Play Music
  */
-module.exports.playMusic = function(cb) {
+module.exports.playMusic = function() {
     var promise = new Promise((resolve, reject) => {
         spotifyApi.play()
         .then(() => {
             resolve();
         })
-        .catch((err) => {
-            logger.warn('Spotify', "Unable to pause music")
-            reject();
+        .catch((error) => {
+            reject(error);
+        });
+    })
+    return promise;
+}
+
+/**
+ * Skip To Next Song
+ */
+module.exports.skipForward = function() {
+    var promise = new Promise((resolve, reject) => {
+        spotifyApi.skipToNext()
+        .then(() => {
+            resolve();
+        })
+        .catch((error) => {
+            reject(error);
+        });
+    });
+    return promise;
+}
+
+/**
+ * Skip To Previous Song
+ */
+module.exports.skipBackward = function() {
+    var promise = new Promise((resolve, reject) => {
+        spotifyApi.skipToPrevious()
+        .then(() => {
+            resolve();
+        })
+        .catch((error) => {
+            reject(error);
         });
     });
     return promise;
@@ -79,7 +113,13 @@ module.exports.playMusic = function(cb) {
  */
 module.exports.getPlaybackStatus = function() {
     var promise = new Promise((resolve, reject) => {
-        resolve();
+        spotifyApi.getMyCurrentPlaybackState()
+        .then((data) => {
+            resolve(data.body);
+        })
+        .catch((error) => {
+            reject(error);
+        });
     });
     return promise;
 }
@@ -100,7 +140,7 @@ module.exports.getStatus = function() {
 module.exports.init = function() {
     var promise = new Promise((resolve, reject) => {
         logger.log('Spotify', 'Initializing...');
-        logger.log('Spotify', 'Initialized')
+        logger.log('Spotify', 'Initialized');
         resolve();
     })
     return promise;

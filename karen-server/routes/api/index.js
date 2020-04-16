@@ -17,10 +17,10 @@ router.get('/ping', (req, res) => {
 });
 
 /**
- * Default for if no endpoints are found
+ * Default for if no endpoints were found
  */
 router.use('*', function(req, res){
-    res.send(response.generate(null, new response.APIError('API Endpoint ' + req.baseUrl + req.path + ' Doesn\'t Exist')));
+    res.send(response.generate(null, new response.APIError('API Endpoint ' + req.method + ' ' + req.baseUrl + req.path + ' Doesn\'t Exist')));
 });
 
 module.exports = router;

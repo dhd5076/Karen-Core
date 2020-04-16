@@ -1,9 +1,8 @@
 var express = require('express');
-var router = express.Router();
+var menuPlanningRouter = require('./menu-planning');
 var response = require('../../utils/response');
+var router = express.Router();
 
-router.get('*', function(req, res){
-    res.send(response.generate(null, new response.APIError('API Endpoint ' + req.path + ' Doesn\'t Exist')));
-});
+router.use('/menu-planning', menuPlanningRouter);
 
 module.exports = router;

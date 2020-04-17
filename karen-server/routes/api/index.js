@@ -3,10 +3,12 @@ var colors = require('colors');
 var response = require('../../utils/response');
 
 var spotifyRouter = require('./spotify');
+var bankingRouter = require('./banking');
 
 var router = express.Router();
 
 router.use('/spotify', spotifyRouter);
+router.use('/banking', bankingRouter);
 
 /**
  * Check if API is live

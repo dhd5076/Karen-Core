@@ -1,5 +1,5 @@
 /**
- * @file Provides utilities for interfacing with spotify
+ * @file Provides Utilities For Interfacing With Spotify
  */
 
 var SpotifyWebApi = require('spotify-web-api-node');

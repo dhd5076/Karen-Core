@@ -5,7 +5,7 @@ var express = require('express');
 var plaid = require('plaid');
 var logger = require('../utils/logger');
 var plaidClient;
-var access_token;
+var access_token = "access-development-5a01eccb-936f-4a62-98d4-43e43b37ab1b";
 
 /**
  * Initialize Plaid Controller
@@ -45,11 +45,10 @@ module.exports.getBankAccountBalance = function() {
     var promise = new Promise((resolve, reject) => {
         plaidClient.getBalance(access_token)
         .then((res) => {
-            logger.info('Plaid', 'Got Account Balance: ' + res);
+            console.log('Token:' + access_token);
             resolve(res);
         })
         .catch((error) => {
-            logger.error('Plaid', 'Failed To Get Account Balance');
             reject(error);
         });
     });

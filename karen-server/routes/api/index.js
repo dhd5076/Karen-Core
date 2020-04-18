@@ -4,17 +4,19 @@ var response = require('../../utils/response');
 
 var spotifyRouter = require('./spotify');
 var bankingRouter = require('./banking');
+var discordRouter = require('./discord');
 
 var router = express.Router();
 
 router.use('/spotify', spotifyRouter);
 router.use('/banking', bankingRouter);
+router.use('/discord', discordRouter);
 
 /**
  * Check if API is live
  */
 router.get('/ping', (req, res) => {
-    console.log(colors.grey("[PING] From " + req.query.who))
+    console.log(colors.grey("[PING] From " + req.query.who));
     res.send('pong');
 });
 

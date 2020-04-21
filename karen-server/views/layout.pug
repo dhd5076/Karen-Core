@@ -1,0 +1,54 @@
+html
+    head
+        title Karen
+        link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(rel='stylesheet', href="/css/base.css")
+    body
+        .container
+            nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+                a.navbar-brand(href="/") Karen
+                button.navbar-toggler(data-toggle="collapse" data-target="#navbar")
+                    span.navbar-toggler-icon
+                .collapse.navbar-collapse(id="navbar")
+                    ul.navbar-nav.mr-auto
+                        li.nav-item.dropdown
+                            a.nav-link.dropdown-toggle(href="#" data-toggle="dropdown") Home
+                            .dropdown-menu
+                                a.dropdown-item(href="#") Lighting
+                        li.nav-item.dropdown
+                            a.nav-link.dropdown-toggle(href="#" data-toggle="dropdown") People
+                            .dropdown-menu
+                                a.dropdown-item(href="#") Contacts
+                        li.nav-item.dropdown
+                            a.nav-link.dropdown-toggle(href="#" data-toggle="dropdown") Music
+                            .dropdown-menu
+                                a.dropdown-item(href="#") Spotify
+                                a.dropdown-item(href="#") Top Tracks
+                        li.nav-item.dropdown
+                            a.nav-link.dropdown-toggle(href="#" data-toggle="dropdown") Kitchen
+                            .dropdown-menu
+                                a.dropdown-item(href="#") Recipes
+                                a.dropdown-item(href="#") Meal Planner
+                                a.dropdown-item(href="#") Pantry
+                                a.dropdown-item(href="/kitchen/foodItem/") Food Items
+                                .dropdown-divider
+                                a.dropdown-item(href="#") Add Food Item
+                        li.nav-item.active
+                            a.nav-link(href="#") Settings
+
+                form.form-inline.my-2.my-lg-0(action="/search")
+                    input.form-control.mr-sm-2(type="search" placeholder="Search")
+                    button.btn.btn-outline-success.my-2.my-sm-0(type="submit") Search 
+
+            block main
+
+
+        script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js")
+        script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js")
+        script(src="https://kit.fontawesome.com/5507e7b576.js")
+        script(src="https://js.squareupsandbox.com/v2/paymentform")
+        script(src="/scripts/payment.js")
+        .container.text-center.fixed-bottom
+            span &copy 2020 Dylan Dunn All Rights Reserved

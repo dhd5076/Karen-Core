@@ -1,0 +1,15 @@
+extends ../layout.pug
+
+block main 
+    h1.mb-4 Food Catalog
+    .row.col-6.p-0
+        form.form-inline.d-flex.justify-content-between.col-12.mx-0(action="/search")
+            .input-group.col-12.p-0
+                input.form-control(type="search" name="query" placeholder="Food Name")
+                .input-group-append
+                    button.btn.btn-outline-secondary(type="submit") Search
+    .row.col-12
+        .col-6.list-group
+            a.list-group-item.list-group-item-action.justify-content-between.d-flex(href="#")
+                span Milk
+                small Serving Size: 8oz

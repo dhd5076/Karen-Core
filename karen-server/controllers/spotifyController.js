@@ -4,12 +4,6 @@
 
 var SpotifyWebApi = require('spotify-web-api-node');
 
-var spotifyApi = new SpotifyWebApi({
-    clientId: 'acd4167d626c4a25bc3124a5e1377c93',
-    clientSecret: '6e5f037af9be4b32aedaf303aa816177',
-    redirectUri: 'https://localhost/api/spotify/authorize'
-});
-
 var logger = require('../utils/logger');
 
 /**
@@ -140,8 +134,20 @@ module.exports.getStatus = function() {
 module.exports.init = function() {
     var promise = new Promise((resolve, reject) => {
         logger.log('Spotify', 'Initializing...');
+        var spotifyApi = new SpotifyWebApi({
+            clientId: 'acd4167d626c4a25bc3124a5e1377c93',
+            clientSecret: '6e5f037af9be4b32aedaf303aa816177',
+            redirectUri: 'https://localhost/api/spotify/authorize'
+        });
         logger.log('Spotify', 'Initialized');
         resolve();
     })
+
     return promise;
+}
+
+/**
+ * State Change
+ */
+function handleStateChange() {
 }

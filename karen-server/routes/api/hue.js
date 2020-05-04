@@ -1,53 +1,39 @@
+/**
+ * @file /api/hue Router
+ */
+
 var express = require('express');
-var router = express.Router();
-var huejay = require('huejay');
-var colors = require('colors');
+var hueController = require('../../controllers/hueController');
+var response = require('../../utils/response');
 var logger = require('../../utils/logger');
 
-module.exports = router;
+var router = express.Router();
 
-var huejayClient;
-var isConnected;
-var hueLights;
-
-
-module.exports.init = function() {
-    logger.log('Hue', 'Discovering Hue Bridges...');
-    huejay.discover()
-    .then(bridges => {
-        isConnected = true;
-        for (let bridge of bridges) {
-            logger.log('Hue', 'Discovered Hue Bridge At IP: ' + bridge.ip);
-
-            huejayClient = new huejay.Client({
-                host:     bridge.ip,
-                username: 'wbLt3DHBSoFb5Vq4DwrhDJxZJw0hnoN-2sDUkZYD'           
-            });
-
-            logger.log('Hue', 'Attempting To Connect To Hue Bridge...');
-            huejayClient.lights.getAll().then(lights => {
-            hueLights = [];
-            for(let light of lights) {
-                logger.log('Hue', 'Found Light: ' + light.name);
-                hueLights.push({
-                    name: light.name
-                });
-            }
-        })
-    }
-  })
-  .catch(error => {
-    logger.error('Hue', 'No bridges found');
-    isConnected = false;
-  });
-}
-
-module.exports.getStatus = function() {
-    var statusPromise = new Promise(function(resolve) {
-        resolve({
-            isConnected: isConnected,
-            lights: hueLights
-        });
+// POST /api/hue/light/:id
+router.post('/light/:id', (req, res) => {
+    hueController.setLightStatus(
+        id, 
+        req.body.on, 
+        req.body.brightness, 
+        req.body.hue, 
+        req.body.saturation)
+    .then(() => {
+        res.send(response.generate(null, null));
+    })
+    .catch((error) => {
+        res.send(response.generate(null, error.message));
     });
-    return statusPromise;
-}
+});
+
+// GET /api/hue/lights
+router.get('/lights', (req, res) => {
+    hueController.getLights()
+    .then(lights => {
+        res.send(response.generate(lights, null));
+    })
+    .catch((error) => {
+        res.send(response.generate(null, error.message));
+    });
+});
+
+module.exports = router;

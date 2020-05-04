@@ -2,12 +2,14 @@ var express = require('express');
 var colors = require('colors');
 var response = require('../../utils/response');
 
+var hueRouter = require('./hue');
 var spotifyRouter = require('./spotify');
 var bankingRouter = require('./banking');
 var discordRouter = require('./discord');
 
 var router = express.Router();
 
+router.use('/hue', hueRouter);
 router.use('/spotify', spotifyRouter);
 router.use('/banking', bankingRouter);
 router.use('/discord', discordRouter);

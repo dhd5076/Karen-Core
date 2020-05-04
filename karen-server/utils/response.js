@@ -1,12 +1,11 @@
 /**
- * Handles api responses, send all responses through this
+ * @file Handles API responses
  */
 
 /**
- * Handles sending responses from API
- * @param {Object} res The response object to use to send the response
+ * Generate an API Response
  * @param {Object} content The body of the API response
- * @param {Object} err The ResponseStatus to send (Generally, use SUCCESS/WARNING/ERROR enum)
+ * @param {APIError} error Optional APIError object 
  */
 module.exports.generate = function(content, error) {
     var APIResponse = {

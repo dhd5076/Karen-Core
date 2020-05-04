@@ -7,10 +7,7 @@ var Schema = mongoose.Schema;
 
 //Defines the FoodItem Schema 
 var FoodItemSchema = new Schema({
-    _id: {
-        type: mongoose.Types.ObjectId,
-        auto: true
-    },
+    fdcId: Number,
     name: {
         type: String,
         required: true
@@ -23,4 +20,4 @@ var FoodItemSchema = new Schema({
 
 });
 
-module.exports = mongoose.Model('FoodItem', FoodItemSchema)
+module.exports = mongoose.model('FoodItem', FoodItemSchema)

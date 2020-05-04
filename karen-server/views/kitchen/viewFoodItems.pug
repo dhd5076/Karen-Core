@@ -3,7 +3,7 @@ extends ../layout.pug
 block main 
     h1.mb-4 Food Catalog
     .row.col-6.p-0
-        form.form-inline.d-flex.justify-content-between.col-12.mx-0(action="/search")
+        form.form-inline.d-flex.justify-content-between.col-12.mx-0(method="GET" action="/kitchen/foodItem")
             .input-group.col-12.p-0
                 input.form-control(type="search" name="query" placeholder="Food Name")
                 .input-group-append

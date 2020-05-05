@@ -5,6 +5,7 @@
 var SpotifyWebApi = require('spotify-web-api-node');
 
 var logger = require('../utils/logger');
+var spotifyApi;
 
 /**
  * Get URL For Authorizing Spotify Account
@@ -31,8 +32,8 @@ module.exports.authorizeAccount = function(code) {
             logger.log('Spotify', 'Authorized Account Successfully');
             resolve();
         })
-        .catch(() => {
-            reject();
+        .catch((error) => {
+            reject(error);
         });
     });
     return promise;
@@ -109,7 +110,11 @@ module.exports.getPlaybackStatus = function() {
     var promise = new Promise((resolve, reject) => {
         spotifyApi.getMyCurrentPlaybackState()
         .then((data) => {
-            resolve(data.body);
+            resolve({
+                name: data.body.item.name,
+                artist: data.body.item.artists[0].name,
+                image_url: data.body.item.album.images[0].url
+            });
         })
         .catch((error) => {
             reject(error);
@@ -134,7 +139,7 @@ module.exports.getStatus = function() {
 module.exports.init = function() {
     var promise = new Promise((resolve, reject) => {
         logger.log('Spotify', 'Initializing...');
-        var spotifyApi = new SpotifyWebApi({
+        spotifyApi = new SpotifyWebApi({
             clientId: 'acd4167d626c4a25bc3124a5e1377c93',
             clientSecret: '6e5f037af9be4b32aedaf303aa816177',
             redirectUri: 'https://localhost/api/spotify/authorize'
@@ -144,10 +149,4 @@ module.exports.init = function() {
     })
 
     return promise;
-}
-
-/**
- * State Change
- */
-function handleStateChange() {
 }

@@ -22,7 +22,9 @@ router.get('/authorize', (req, res) => {
     .then(() => {
         res.send(response.generate(null, null));
     })
-    .catch(() => {
+    .catch(error => {
+        console.log(error)
+        res.send(response.generate(null, new response.APIError(error.message)));
         logger.error('Spotify', 'Unable to Authorize Account')
     })
 });

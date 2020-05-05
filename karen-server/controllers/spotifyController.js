@@ -113,7 +113,8 @@ module.exports.getPlaybackStatus = function() {
             resolve({
                 name: data.body.item.name,
                 artist: data.body.item.artists[0].name,
-                image_url: data.body.item.album.images[0].url
+                image_url: data.body.item.album.images[0].url,
+                is_playing: data.body.is_playing
             });
         })
         .catch((error) => {

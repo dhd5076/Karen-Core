@@ -10,10 +10,11 @@ import SwiftUI
 import URLImage
 
 struct SpotifyView: View {
-    let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
+    @State public var timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
     @State public var mainImageURL = "https://via.placeholder.com/200"
     @State public var songTitle = "Song Title"
     @State public var artistName = "Artist Name"
+    @State public var systemName = "play.circle.fill"
     
     var body: some View {
         VStack(spacing: 0) {
@@ -48,7 +49,7 @@ struct SpotifyView: View {
                 Button(action: {
                     self.toggleMusicPlaying()
                 }) {
-                    Image(systemName: "play.circle.fill")
+                    Image(systemName: systemName)
                     .resizable()
                         .frame(maxWidth: 64, maxHeight: 64)
                 }
@@ -61,10 +62,27 @@ struct SpotifyView: View {
                 .foregroundColor(.black)
             }
         }
+        .onAppear {
+            self.timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+            self.updatePlaybackState()
+        }
+        .navigationBarTitle(Text("Music"), displayMode: .inline)
     }
     
     func toggleMusicPlaying() {
-        print("Toggled Music Playing")
+        let url: URL
+        if(systemName == "play.circle.fill") {
+            url = URL(string: "http:192.168.1.145/api/spotify/play")!
+            self.systemName = "pause.circle.fill"
+        } else {
+            url = URL(string: "http:192.168.1.145/api/spotify/pause")!
+            self.systemName = "play.circle.fill"
+        }
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        URLSession.shared.dataTask(with: request) { data, response, error in
+        }.resume()
     }
 
     func previousSong() {
@@ -102,6 +120,11 @@ struct SpotifyView: View {
                         self.songTitle = playbackState.content.name
                         self.artistName = playbackState.content.artist
                         self.mainImageURL = playbackState.content.image_url
+                        if(playbackState.content.is_playing) {
+                            self.systemName = "pause.circle.fill"
+                        } else {
+                            self.systemName = "play.circle.fill"
+                        }
                     }
                     return
                 }

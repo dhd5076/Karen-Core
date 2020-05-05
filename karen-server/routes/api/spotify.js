@@ -23,7 +23,6 @@ router.get('/authorize', (req, res) => {
         res.send(response.generate(null, null));
     })
     .catch(error => {
-        console.log(error)
         res.send(response.generate(null, new response.APIError(error.message)));
         logger.error('Spotify', 'Unable to Authorize Account')
     })
@@ -36,7 +35,7 @@ router.get('/getPlaybackState', (req, res) => {
         res.send(response.generate(playbackState, null));
     })
     .catch((error) => {
-        logger.error('Spotify', 'Error Trying To Get Playback State');
+        logger.error('Spotify', 'Error Trying To Get Playback State : ' + error.message);
         res.send(response.generate(null, new response.APIError(error.message)));
     });
 });
@@ -48,7 +47,7 @@ router.post('/skipForward', (req, res) => {
         res.send(response.generate(null, null));
     })
     .catch((error) => {
-        logger.error('Spotify', 'Error Trying To Skip To Next Song');
+        logger.error('Spotify', 'Error Trying To Skip To Next Song : ' + error.message);
         res.send(response.generate(null, new response.APIError(error.message)));
     });
 });
@@ -60,7 +59,7 @@ router.post('/skipBackward', (req, res) => {
         res.send(response.generate(null, null));
     })
     .catch((error) => {
-        logger.error('Spotify', 'Error Trying To Skip To Previous Song');
+        logger.error('Spotify', 'Error Trying To Skip To Previous Song : ' + error.message);
         res.send(response.generate(null, new response.APIError(error.message)));
     });
 });
@@ -72,7 +71,7 @@ router.post('/pause', (req, res) => {
             res.send(response.generate(null, null));
         })
         .catch((error) => {
-            logger.error('Spotify', 'Error Trying To Pause Music ');
+            logger.error('Spotify', 'Error Trying To Pause Music : ' + error.message);
             res.send(response.generate(null, new response.APIError(error.message)));
         })
 });
@@ -84,7 +83,7 @@ router.post('/play', (req, res) => {
             res.send(response.generate(null, null));
         })
         .catch((error) => {
-            logger.error('Spotify', 'Error Trying To Play Music ');
+            logger.error('Spotify', 'Error Trying To Play Music : ' + error.message);
             res.send(response.generate(null, new response.APIError(error.message)));
         })
 });

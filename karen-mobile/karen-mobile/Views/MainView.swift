@@ -22,7 +22,7 @@ struct MainView: View {
                 .tabItem( {
                     Image(systemName: "magnifyingglass")
                     Text("Search")
-                })
+            })
             QuickView()
                 .tabItem( {
                     Image(systemName: "square.grid.2x2")

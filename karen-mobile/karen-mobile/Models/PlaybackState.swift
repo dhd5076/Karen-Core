@@ -12,6 +12,7 @@ struct PlaybackStateContent : Decodable {
     let name: String
     let artist : String
     let image_url : String
+    let is_playing : Bool
 }
 
 struct PlaybackState : Decodable {

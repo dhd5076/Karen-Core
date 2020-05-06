@@ -9,12 +9,18 @@
 import SwiftUI
 import URLImage
 
-struct SpotifyView: View {
-    @State public var timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
+struct MusicView: View {
+    @State public var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State public var mainImageURL = "https://via.placeholder.com/200"
     @State public var songTitle = "Song Title"
     @State public var artistName = "Artist Name"
     @State public var systemName = "play.circle.fill"
+    @State public var playbackProgress = 0.0
+    @State public var playbackProgressText = "0:00"
+    @State public var playbackLength = 130.0
+    @State public var playbackLengthText = "1:02"
+    
+    @State public var timerCounter = 0
     
     var body: some View {
         VStack(spacing: 0) {
@@ -39,28 +45,43 @@ struct SpotifyView: View {
             }
             .padding(24)
             .frame(maxWidth: .infinity)
-            HStack(spacing: 100) {
+            Slider(value: $playbackProgress, in: 0...playbackLength, step: 1.0, onEditingChanged: { value in
+                    print(value)
+            })
+                .padding(.leading, 24)
+                .padding(.trailing, 24)
+                .accentColor(.gray)
+            HStack {
+                Text(playbackProgressText)
+                Spacer()
+                Text(playbackLengthText)
+            }
+            .padding(.leading, 24)
+            .padding(.trailing, 24)
+            HStack(spacing: 50) {
                 Button(action: {
                     self.previousSong()
                 }) {
                     Image(systemName: "backward.end.fill")
+                        .resizable()
+                        .frame(maxWidth: 24, maxHeight: 24)
                 }
-                .foregroundColor(.black)
                 Button(action: {
                     self.toggleMusicPlaying()
                 }) {
                     Image(systemName: systemName)
-                    .resizable()
+                        .resizable()
                         .frame(maxWidth: 64, maxHeight: 64)
                 }
-                .foregroundColor(.black)
                 Button(action: {
                     self.nextSong()
                 }) {
                     Image(systemName: "forward.end.fill")
+                        .resizable()
+                        .frame(maxWidth: 24, maxHeight: 24)
                 }
-                .foregroundColor(.black)
             }
+            .padding(12)
         }
         .onAppear {
             self.timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -107,6 +128,7 @@ struct SpotifyView: View {
     }
     
     func updatePlaybackState() {
+        
         let url = URL(string: "http:192.168.1.145/api/spotify/getPlaybackState")!
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -135,6 +157,6 @@ struct SpotifyView: View {
 
 struct SpotifyView_Previews: PreviewProvider {
     static var previews: some View {
-        SpotifyView()
+        MusicView()
     }
 }

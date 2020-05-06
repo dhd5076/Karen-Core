@@ -16,8 +16,8 @@ struct HomeView: View {
         NavigationView {
             ScrollView {
                 VStack {
-                    HomeLink(destination: AnyView(SpotifyView()), text: "Music", color: Color.green)
-                    HomeLink(destination: AnyView(ContactView()), text: "Contacts", color: Color.purple)
+                    HomeLink(destination: AnyView(MusicView()), text: "Music", color: Color.green)
+                    HomeLink(destination: AnyView(ContactsView()), text: "Contacts", color: Color.purple)
                     HomeLink(destination: AnyView(LightingView()), text: "Lighting",
                              color: Color.yellow)
                     HomeLink(destination: AnyView(GymView()),  text: "Gym",

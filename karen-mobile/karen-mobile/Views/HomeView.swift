@@ -1,65 +1,53 @@
 //
-//  HomeView.swift
+//  LightingVIew.swift
 //  karen-mobile
 //
-//  Created by Dylan Dunn on 5/4/20.
+//  Created by Dylan Dunn on 4/19/20.
 //  Copyright © 2020 Dylan Dunn. All rights reserved.
 //
 
 import SwiftUI
 
 struct HomeView: View {
-    
-    @State public var showingSettings = false
-    
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack {
-                    HomeLink(destination: AnyView(MusicView()), text: "Music", color: Color.green)
-                    HomeLink(destination: AnyView(ContactsView()), text: "Contacts", color: Color.purple)
-                    HomeLink(destination: AnyView(LightingView()), text: "Lighting",
-                             color: Color.yellow)
-                    HomeLink(destination: AnyView(GymView()),  text: "Gym",
-                             color: Color.blue)
-                    HomeLink(destination: AnyView(BankingView()), text: "Banking",
-                             color: Color.gray)
-                }
-                .navigationBarTitle("Home")
-                .navigationBarItems(trailing:
-                    Button("Settings") {
-                        self.showingSettings.toggle();
-                })
-                .sheet(isPresented: $showingSettings) { // TODO: Use SettingsView
-                    NavigationView {
-                        SettingsView()
-                        .navigationBarTitle(Text("Settings"), displayMode: .inline)
-                        .navigationBarItems(trailing:
-                            Button("Done") {
-                            self.showingSettings = false
-                        })
+        VStack {
+            Circle()
+                .stroke(lineWidth: 5)
+                .frame(width:128, height: 128)
+                .overlay(Text("72°F").font(.title))
+                .padding(12)
+            List {
+                Section(header: Text("Rooms")) {
+                    NavigationLink(destination: BedroomView()) {
+                        HStack {
+                            Text("🛏️")
+                            Text("Bedroom")
+                        }
+                    }
+                    NavigationLink(destination: KitchenView()) {
+                        HStack {
+                            Text("🍴")
+                            Text("Kitchen")
+                        }
+                    }
+                    NavigationLink(destination: BathroomView()) {
+                        HStack {
+                            Text("🚿")
+                            Text("Bathroom")
+                        }
+                    }
+                    NavigationLink(destination: HomeView()) {
+                        HStack {
+                            Text("🚘")
+                            Text("Garage")
+                        }
                     }
                 }
             }
         }
-    }
-}
-
-struct HomeLink : View {
-    let destination : AnyView
-    let text : String
-    let color : Color
-    
-    var body: some View {
-        NavigationLink(destination: destination) {
-            Text(text)
-                .frame(maxWidth: .infinity, minHeight: 150)
-                .foregroundColor(.white)
-                .background(color)
-                .padding()
-                .font(.system(size: 30, weight: .heavy, design: .default))
-            
-        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .navigationBarTitle("Home")
+        .listStyle(GroupedListStyle())
     }
 }
 

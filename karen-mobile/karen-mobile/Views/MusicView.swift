@@ -87,7 +87,7 @@ struct MusicView: View {
             self.timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
             self.updatePlaybackState()
         }
-        .navigationBarTitle(Text("Music"), displayMode: .inline)
+        .navigationBarTitle(Text("Music"))
     }
     
     func toggleMusicPlaying() {

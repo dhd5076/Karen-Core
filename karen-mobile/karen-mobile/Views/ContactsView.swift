@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import URLImage
 
 struct ContactsView: View {
     @State public var query = ""
@@ -17,9 +18,8 @@ struct ContactsView: View {
             List {
                 NavigationLink(destination: ContactView()) {
                     HStack(spacing: 12) {
-                        Image(systemName: "circle")
-                            .resizable()
-                            .frame(width: 64, height: 64)
+                        URLImage(URL(string: "https://via.placeholder.com/64")!)
+                        .frame(width: 64, height: 64)
                         Text("John Doe")
                         Spacer()
                     }

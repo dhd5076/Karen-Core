@@ -9,15 +9,47 @@
 import SwiftUI
 import HealthKit
 import HealthKitUI
+import URLImage
 
 struct SettingsView: View {
     var body: some View {
-        VStack {
-            Button(action: requestHealthKitAccess) {
-                Text("Request HealthKit Access")
+        NavigationView {
+            VStack {
+                List {
+                    HStack(spacing: 12) {
+                        URLImage(URL(string: "https://via.placeholder.com/64")!)
+                            .clipShape(Circle())
+                            .frame(width: 64, height: 64)
+                        NavigationLink(destination: BankingView()) {
+                            VStack(alignment: .leading) {
+                                Text("Dylan Dunn")
+                                    .font(.title)
+                                Text("Owner")
+                                    .font(.subheadline)
+                            }
+                        }
+                        
+                    }
+                    Section(header: Text("Music")) {
+                        Button("Connect Spotify") {
+                            connectToSpotify()
+                        }
+                    }
+                    Section(header: Text("Health")) {
+                        Button("Request HealthKit Access") {
+                            requestHealthKitAccess()
+                        }
+                    }
+                }
             }
+            .navigationBarTitle("Settings")
+            .listStyle(GroupedListStyle())
         }
     }
+}
+
+func connectToSpotify() {
+    print("Not Implemented")
 }
 
 func requestHealthKitAccess() {

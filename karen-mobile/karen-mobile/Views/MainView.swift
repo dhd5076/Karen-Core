@@ -13,10 +13,15 @@ import HealthKitUI
 struct MainView: View {
     var body: some View {
         TabView {
-            HomeView()
+            Text("asdasd")
                 .tabItem( {
                     Image(systemName: "house")
                     Text("Home")
+            })
+            AppView()
+                .tabItem( {
+                    Image(systemName: "rectangle.grid.1x2.fill")
+                    Text("Apps")
             })
             SearchView()
                 .tabItem( {
@@ -27,6 +32,11 @@ struct MainView: View {
                 .tabItem( {
                     Image(systemName: "square.grid.2x2")
                     Text("Quick Actions")
+            })
+            SettingsView()
+                .tabItem( {
+                    Image(systemName: "gear")
+                    Text("Settings")
             })
         }
     }

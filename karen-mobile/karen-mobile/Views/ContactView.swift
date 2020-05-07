@@ -9,15 +9,18 @@
 import SwiftUI
 import Messages
 import MessageUI
+import URLImage
 
 struct  ContactView: View {
     var body: some View  {
         VStack {
-            Circle()
-                .strokeBorder(lineWidth: 12.0)
-                .frame(width: 128, height:128)
+            URLImage(URL(string: "https://via.placeholder.com/128")!)          .frame(width: 128, height:128)
+                .clipShape(Circle())
+                .overlay(Circle().stroke(Color.black, lineWidth: 1))
             Text("John Doe")
                 .font(.title)
+            Text("Friend")
+                .font(.caption)
             List {
                 Button(action: viewInstagram) {
                     Text("View Instagram")
@@ -29,12 +32,9 @@ struct  ContactView: View {
             .foregroundColor(.blue)
             }
         }
-        .navigationBarTitle("Joe Doe")
         .navigationBarItems(trailing:
-            Button(action: {
-                print("")
-            }) {
-                Image(systemName: "plus")
+            Button("Edit") {
+                print("Edit Contact")
         })
     }
     

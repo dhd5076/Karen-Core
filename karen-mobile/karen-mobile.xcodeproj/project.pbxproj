@@ -14,6 +14,8 @@
 		9A39D15F2463C221001894F5 /* LightingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39D15E2463C221001894F5 /* LightingView.swift */; };
 		9A39D1612463DBF8001894F5 /* CookbookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39D1602463DBF8001894F5 /* CookbookView.swift */; };
 		9A39D1632463E3D4001894F5 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39D1622463E3D4001894F5 /* RecipeView.swift */; };
+		9A39D16724646D8B001894F5 /* ItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39D16624646D8B001894F5 /* ItemListView.swift */; };
+		9A5B1C3A246486A300A25C80 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5B1C39246486A300A25C80 /* ItemView.swift */; };
 		9A64C088246113E700C83924 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A64C087246113E700C83924 /* AppDelegate.swift */; };
 		9A64C08A246113E700C83924 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A64C089246113E700C83924 /* SceneDelegate.swift */; };
 		9A64C08D246113E700C83924 /* karen_mobile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A64C08B246113E700C83924 /* karen_mobile.xcdatamodeld */; };
@@ -36,6 +38,29 @@
 		9A68D8F52462772100451AB5 /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A68D8F42462772100451AB5 /* ContactView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		9A39D17C2464709C001894F5 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A39D1AB246472AE001894F5 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		9A2B9A312461256C00A7A39E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		9A39D1582463A5EA001894F5 /* BedroomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedroomView.swift; sourceTree = "<group>"; };
@@ -44,7 +69,10 @@
 		9A39D15E2463C221001894F5 /* LightingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightingView.swift; sourceTree = "<group>"; };
 		9A39D1602463DBF8001894F5 /* CookbookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookbookView.swift; sourceTree = "<group>"; };
 		9A39D1622463E3D4001894F5 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
-		9A64C084246113E700C83924 /* karen-mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "karen-mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A39D16624646D8B001894F5 /* ItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListView.swift; sourceTree = "<group>"; };
+		9A39D16D2464709C001894F5 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		9A5B1C39246486A300A25C80 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
+		9A64C084246113E700C83924 /* IOS App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IOS App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A64C087246113E700C83924 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A64C089246113E700C83924 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9A64C08C246113E700C83924 /* karen_mobile.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = karen_mobile.xcdatamodel; sourceTree = "<group>"; };
@@ -85,14 +113,75 @@
 			isa = PBXGroup;
 			children = (
 				9A2B9A312461256C00A7A39E /* HealthKit.framework */,
+				9A39D16D2464709C001894F5 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9A5B1C3C246487A900A25C80 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				9A64C0C52461151100C83924 /* HomeView.swift */,
+				9A39D1582463A5EA001894F5 /* BedroomView.swift */,
+				9A39D15E2463C221001894F5 /* LightingView.swift */,
+				9A39D15C2463A660001894F5 /* BathroomView.swift */,
+				9A39D15A2463A64C001894F5 /* KitchenView.swift */,
+				9A39D1602463DBF8001894F5 /* CookbookView.swift */,
+				9A39D1622463E3D4001894F5 /* RecipeView.swift */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		9A5B1C3D246487CA00A25C80 /* People */ = {
+			isa = PBXGroup;
+			children = (
+				9A64C0C62461151100C83924 /* ContactsView.swift */,
+				9A68D8F42462772100451AB5 /* ContactView.swift */,
+			);
+			path = People;
+			sourceTree = "<group>";
+		};
+		9A5B1C3E246487E700A25C80 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				9A64C0CD2461151100C83924 /* MusicView.swift */,
+			);
+			name = Music;
+			sourceTree = "<group>";
+		};
+		9A5B1C3F2464882300A25C80 /* Health */ = {
+			isa = PBXGroup;
+			children = (
+				9A64C0C72461151100C83924 /* GymView.swift */,
+			);
+			name = Health;
+			sourceTree = "<group>";
+		};
+		9A5B1C402464883300A25C80 /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				9A64C0CC2461151100C83924 /* AppView.swift */,
+				9A5B1C412464884B00A25C80 /* Money */,
+				9A5B1C3C246487A900A25C80 /* Home */,
+				9A5B1C3D246487CA00A25C80 /* People */,
+				9A5B1C3E246487E700A25C80 /* Music */,
+				9A5B1C3F2464882300A25C80 /* Health */,
+			);
+			name = Apps;
+			sourceTree = "<group>";
+		};
+		9A5B1C412464884B00A25C80 /* Money */ = {
+			isa = PBXGroup;
+			children = (
+				9A64C0C82461151100C83924 /* BankingView.swift */,
+			);
+			name = Money;
 			sourceTree = "<group>";
 		};
 		9A64C07B246113E700C83924 = {
 			isa = PBXGroup;
 			children = (
-				9A64C086246113E700C83924 /* karen-mobile */,
+				9A64C086246113E700C83924 /* IOS App */,
 				9A64C085246113E700C83924 /* Products */,
 				9A2B9A302461256B00A7A39E /* Frameworks */,
 			);
@@ -101,12 +190,12 @@
 		9A64C085246113E700C83924 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9A64C084246113E700C83924 /* karen-mobile.app */,
+				9A64C084246113E700C83924 /* IOS App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9A64C086246113E700C83924 /* karen-mobile */ = {
+		9A64C086246113E700C83924 /* IOS App */ = {
 			isa = PBXGroup;
 			children = (
 				9A68D8F3246270FF00451AB5 /* Components */,
@@ -122,7 +211,7 @@
 				9A64C0DF2461168E00C83924 /* Assets.xcassets */,
 				9A64C092246113EB00C83924 /* Preview Content */,
 			);
-			path = "karen-mobile";
+			path = "IOS App";
 			sourceTree = "<group>";
 		};
 		9A64C092246113EB00C83924 /* Preview Content */ = {
@@ -136,22 +225,12 @@
 		9A64C0B2246114A500C83924 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9A64C0C82461151100C83924 /* BankingView.swift */,
-				9A64C0C62461151100C83924 /* ContactsView.swift */,
-				9A64C0C72461151100C83924 /* GymView.swift */,
-				9A64C0CC2461151100C83924 /* AppView.swift */,
-				9A64C0C52461151100C83924 /* HomeView.swift */,
+				9A5B1C402464883300A25C80 /* Apps */,
+				9A39D16624646D8B001894F5 /* ItemListView.swift */,
+				9A5B1C39246486A300A25C80 /* ItemView.swift */,
 				9A64C0CB2461151100C83924 /* MainView.swift */,
 				9A64C0C92461151100C83924 /* SearchView.swift */,
 				9A64C0CA2461151100C83924 /* SettingsView.swift */,
-				9A64C0CD2461151100C83924 /* MusicView.swift */,
-				9A68D8F42462772100451AB5 /* ContactView.swift */,
-				9A39D1582463A5EA001894F5 /* BedroomView.swift */,
-				9A39D15A2463A64C001894F5 /* KitchenView.swift */,
-				9A39D15C2463A660001894F5 /* BathroomView.swift */,
-				9A39D15E2463C221001894F5 /* LightingView.swift */,
-				9A39D1602463DBF8001894F5 /* CookbookView.swift */,
-				9A39D1622463E3D4001894F5 /* RecipeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -175,24 +254,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9A64C083246113E700C83924 /* karen-mobile */ = {
+		9A64C083246113E700C83924 /* IOS App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9A64C09B246113EB00C83924 /* Build configuration list for PBXNativeTarget "karen-mobile" */;
+			buildConfigurationList = 9A64C09B246113EB00C83924 /* Build configuration list for PBXNativeTarget "IOS App" */;
 			buildPhases = (
 				9A64C080246113E700C83924 /* Sources */,
 				9A64C081246113E700C83924 /* Frameworks */,
 				9A64C082246113E700C83924 /* Resources */,
+				9A39D17C2464709C001894F5 /* Embed App Extensions */,
+				9A39D1AB246472AE001894F5 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "karen-mobile";
+			name = "IOS App";
 			packageProductDependencies = (
 				9A64C0DD2461160F00C83924 /* URLImage */,
 			);
 			productName = "karen-mobile";
-			productReference = 9A64C084246113E700C83924 /* karen-mobile.app */;
+			productReference = 9A64C084246113E700C83924 /* IOS App.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -226,7 +307,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9A64C083246113E700C83924 /* karen-mobile */,
+				9A64C083246113E700C83924 /* IOS App */,
 			);
 		};
 /* End PBXProject section */
@@ -263,10 +344,12 @@
 				9A64C0CF2461151100C83924 /* ContactsView.swift in Sources */,
 				9A64C0CE2461151100C83924 /* HomeView.swift in Sources */,
 				9A64C08A246113E700C83924 /* SceneDelegate.swift in Sources */,
+				9A39D16724646D8B001894F5 /* ItemListView.swift in Sources */,
 				9A64C0D12461151100C83924 /* BankingView.swift in Sources */,
 				9A64C0D02461151100C83924 /* GymView.swift in Sources */,
 				9A39D15F2463C221001894F5 /* LightingView.swift in Sources */,
 				9A64C0D32461151100C83924 /* SettingsView.swift in Sources */,
+				9A5B1C3A246486A300A25C80 /* ItemView.swift in Sources */,
 				9A39D1592463A5EA001894F5 /* BedroomView.swift in Sources */,
 				9A64C0AD2461146B00C83924 /* SearchBar.swift in Sources */,
 				9A64C0D22461151100C83924 /* SearchView.swift in Sources */,
@@ -406,18 +489,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "karen-mobile/karen-mobile.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "IOS App/karen-mobile.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"karen-mobile/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"IOS APP/Preview Content\"";
 				DEVELOPMENT_TEAM = 483KLC6N9W;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "karen-mobile/Info.plist";
+				INFOPLIST_FILE = "IOS App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dylandunn.karen-mobile";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -427,18 +511,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "karen-mobile/karen-mobile.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "IOS App/karen-mobile.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"karen-mobile/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"IOS App/Preview Content\"";
 				DEVELOPMENT_TEAM = 483KLC6N9W;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "karen-mobile/Info.plist";
+				INFOPLIST_FILE = "IOS App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dylandunn.karen-mobile";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -456,7 +541,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9A64C09B246113EB00C83924 /* Build configuration list for PBXNativeTarget "karen-mobile" */ = {
+		9A64C09B246113EB00C83924 /* Build configuration list for PBXNativeTarget "IOS App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9A64C09C246113EB00C83924 /* Debug */,

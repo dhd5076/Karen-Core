@@ -19,15 +19,21 @@ struct BedroomView: View {
                 .onTapGesture() {
                     self.lightButtonScale += 0.1
                 }
-            .onLongPressGesture(minimumDuration: 0.2) {
-                    self.showLightingView = true
-                self.hapticFeedback.notificationOccurred(.success)
-                }
+                .onLongPressGesture(minimumDuration: 0.2) {
+                        self.showLightingView = true
+                    self.hapticFeedback.notificationOccurred(.success)
+                    }
                 .sheet(isPresented: $showLightingView) {
                     LightingView()
                 }
-                .scaleEffect(lightButtonScale)
-            .animation(.interpolatingSpring(mass: 1.0,stiffness: 100.0,damping: 10,initialVelocity: 0))
+            List {
+                NavigationLink(destination: ItemListView(navTitle: "Wardrobe")) {
+                    HStack {
+                        Text("👕")
+                        Text("Wardrobe")
+                    }
+                }
+            }
         }
         .navigationBarTitle("Bedroom")
         .padding()

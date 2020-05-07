@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct CookbookView: View {
+    @State public var showingRecipeEditor = false
+    
     var body: some View {
         List {
             Section(header: Text("Breakfast")) {
@@ -18,7 +20,23 @@ struct CookbookView: View {
             }
         }
         .navigationBarTitle("Cookbook")
+        .navigationBarItems(trailing:
+            Button(action: {
+                self.showingRecipeEditor = true
+            }) {
+                Image(systemName: "plus")
+            }
+        )
         .listStyle(GroupedListStyle())
+        .sheet(isPresented: $showingRecipeEditor) {
+            EditRecipe()
+        }
+    }
+}
+
+struct EditRecipe : View {
+    var body : some View {
+        Text("Get Fucked")
     }
 }
 

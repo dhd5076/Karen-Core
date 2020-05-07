@@ -10,9 +10,18 @@ import SwiftUI
 
 struct KitchenView: View {
     var body: some View {
-        NavigationLink(destination: CookbookView()) {
-            VStack {
-                Text("View Cookbook")
+        List {
+            NavigationLink(destination: CookbookView()) {
+                HStack {
+                    Text("📖")
+                    Text("Cookbook")
+                }
+            }
+            NavigationLink(destination: ItemListView(navTitle: "Pantry")) {
+                HStack {
+                    Text("🥫")
+                    Text("Pantry")
+                }
             }
         }
         .navigationBarTitle("Kitchen")

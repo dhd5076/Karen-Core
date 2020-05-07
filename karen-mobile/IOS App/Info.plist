@@ -2,35 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>LSApplicationQueriesSchemes</key>
-	<dict>
-		<key>sms:</key>
-		<string></string>
-	</dict>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<false/>
-	</dict>
-	<key>NSHealthShareUsageDescription</key>
-	<string>Used for read and writing health store data</string>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>Used for updating health store</string>
-	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
-	<string>Used for reading health store</string>
-	<key>Entitlements File</key>
-	<dict>
-		<key>HealthKit Capabilities</key>
-		<string></string>
-		<key>HealthKit</key>
-		<true/>
-	</dict>
-	<key>CFBundleIconFile</key>
-	<string>karen</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIconFile</key>
+	<string>karen</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -43,8 +20,31 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>Entitlements File</key>
+	<dict>
+		<key>HealthKit</key>
+		<true/>
+		<key>HealthKit Capabilities</key>
+		<string></string>
+	</dict>
+	<key>LSApplicationQueriesSchemes</key>
+	<dict>
+		<key>sms:</key>
+		<string></string>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<false/>
+	</dict>
+	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
+	<string>Used for reading health store</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Used for read and writing health store data</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Used for updating health store</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -81,8 +81,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

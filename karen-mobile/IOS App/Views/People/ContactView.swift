@@ -7,7 +7,9 @@
 //
 
 import SwiftUI
+#if !targetEnvironment(macCatalyst)
 import Messages
+#endif
 import MessageUI
 import URLImage
 
@@ -25,11 +27,16 @@ struct  ContactView: View {
                 Button(action: viewInstagram) {
                     Text("View Instagram")
                 }
-                .foregroundColor(.blue)
-            Button(action: sendMessage) {
-                Text("Send Message")
-            }
-            .foregroundColor(.blue)
+                    .foregroundColor(.blue)
+                Button(action: sendMessage) {
+                    Text("Send Message")
+                }
+                    .foregroundColor(.blue)
+                HStack {
+                    Text("Phone Number")
+                    Spacer()
+                    Text("315-529-4032")
+                }
             }
         }
         .navigationBarItems(trailing:

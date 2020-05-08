@@ -45,7 +45,7 @@ router.get('/search', (req, res) => {
 
 // POST /api/kitchen/food/
 router.post('/', (req, res) => {
-    foodController.create("DATA PLACEHOLDER") // TODO Implemented
+    foodController.create("DATA PLACEHOLDER") // TODO Implement
     .then(() => {
         res.send(response.generate(foods, null));
     })

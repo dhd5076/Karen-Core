@@ -13,8 +13,8 @@ var request = require('request');
  * @returns {FoodItem[]} The first 25 items matching 
 */
 module.exports.search = function(query){
-    var promise = new Promise((resolve, reject) => {
-        throw new Error("Not Implemented")
+    return promise = new Promise((resolve, reject) => {
+        reject(new Error("Not Implemented"));
     });
 }
 
@@ -25,7 +25,7 @@ module.exports.search = function(query){
  */
 module.exports.get = function(id) {
     var promise = new Promise((resolve, reject) => {
-        throw new Error("Not Implemented")
+        reject(new Error("Not Implemented"));
     });
 }
 
@@ -34,8 +34,8 @@ module.exports.get = function(id) {
  * @param {String} id The id of the item to delete
  */
 module.exports.delete = function(id) {
-    var promise = new Promise((resolve, reject) => {
-        throw new Error("Not Implemented")
+    return promise = new Promise((resolve, reject) => {
+        reject(new Error("Not Implemented"));
     });
 }
 
@@ -44,8 +44,8 @@ module.exports.delete = function(id) {
  * @param {Object} foodItemData The information to create the foodItem with
  */
 module.exports.create = function(foodItemData) {
-    var promise = new Promise((resolve, reject) => {
-        throw new Error("Not Implemented")
+    return promise = new Promise((resolve, reject) => {
+        reject(new Error("Not Implemented"));
     });
 }
 
@@ -54,7 +54,7 @@ module.exports.create = function(foodItemData) {
  * @returns {FoodItem[]} All food items
  */
 module.exports.getAll = function() {
-    var promsie = new Promise((resolve, reject) => {
-        throw new Error("Not Implemented")
+    return promise = new Promise((resolve, reject) => {
+        reject(new Error("Not Implemented"))
     });
 }

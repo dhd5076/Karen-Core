@@ -18,6 +18,26 @@ struct CookbookView: View {
                     Text("French Toast")
                 }
             }
+            Section(header: Text("Lunch")) {
+                NavigationLink(destination: RecipeView()) {
+                    Text("Ham and Cheese Sandwhich")
+                }
+            }
+            Section(header: Text("Dinner")) {
+                NavigationLink(destination: RecipeView()) {
+                    Text("Gochujang Chicken Lollipops")
+                }
+            }
+            Section(header: Text("Snacks")) {
+                NavigationLink(destination: RecipeView()) {
+                    Text("Ants On A Log")
+                }
+            }
+            Section(header: Text("Desert")) {
+                NavigationLink(destination: RecipeView()) {
+                    Text("Baklava")
+                }
+            }
         }
         .navigationBarTitle("Cookbook")
         .navigationBarItems(trailing:

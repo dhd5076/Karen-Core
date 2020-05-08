@@ -12,12 +12,11 @@ var FoodItemSchema = new Schema({
         type: String,
         required: true
     },
-    nutrient: {
+    nutrition: {
         protein: Number,
         fat: Number,
         carbohydrates: Number
     }
-
 });
 
 module.exports = mongoose.model('FoodItem', FoodItemSchema)

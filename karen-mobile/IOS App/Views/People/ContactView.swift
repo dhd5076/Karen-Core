@@ -14,9 +14,14 @@ import MessageUI
 import URLImage
 
 struct  ContactView: View {
+    @State public var description : String = "Hello World"
+    @State private var selectedStrength = 0
+    
+    var strengths = ["Mild", "Medium", "Mature"]
+    
     var body: some View  {
         VStack {
-            URLImage(URL(string: "https://via.placeholder.com/128")!)          .frame(width: 128, height:128)
+            URLImage(URL(string: "https://via.placeholder.com/96")!)          .frame(width: 96, height:96)
                 .clipShape(Circle())
                 .overlay(Circle().stroke(Color.black, lineWidth: 1))
             Text("John Doe")
@@ -24,20 +29,30 @@ struct  ContactView: View {
             Text("Friend")
                 .font(.caption)
             List {
-                Button(action: viewInstagram) {
-                    Text("View Instagram")
+                Section(header: Text("Contact Information")) {
+                    HStack {
+                        Text("Phone Number")
+                        Spacer()
+                        Text("315-529-4032")
+                    }
                 }
-                    .foregroundColor(.blue)
-                Button(action: sendMessage) {
-                    Text("Send Message")
+                Section(header: Text("Platforms")) {
+                    Button(action: viewInstagram) {
+                        Text("View Instagram")
+                    }
+                        .foregroundColor(.blue)
+                    Button(action: sendMessage) {
+                        Text("Send Message")
+                    }
+                        .foregroundColor(.blue)
                 }
-                    .foregroundColor(.blue)
-                HStack {
-                    Text("Phone Number")
-                    Spacer()
-                    Text("315-529-4032")
+                Section(header: Text("Other")) {
+                    NavigationLink(destination: ContactView()) {
+                        Text("Additional Data")
+                    }
                 }
             }
+            .listStyle(GroupedListStyle())
         }
         .navigationBarItems(trailing:
             Button("Edit") {

@@ -2,7 +2,7 @@
  * @file Provides utilities for interfacing with spotify
  */
 var logger = require('../utils/logger');
-var spotifyController = require('./spotifyController');
+var musicController = require('./musicController');
 var plaidController = require('./plaidController');
 var discordController = require('./discordController');
 var replyController = require('./replyController');
@@ -13,7 +13,7 @@ var hueController = require('./hueController');
  */
 module.exports.initializeControllers = function() {
     logger.log('Karen', 'Initializing Modules...');
-    spotifyController.init()
+    musicController.init()
     .then(plaidController.init())
     .then(replyController.init())
     .then(hueController.init())

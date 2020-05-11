@@ -6,8 +6,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 //Defines the FoodItem Schema 
-var FoodItemSchema = new Schema({
-    fdcId: Number,
+var FoodSchema = new Schema({
     name: {
         type: String,
         required: true
@@ -16,7 +15,8 @@ var FoodItemSchema = new Schema({
         protein: Number,
         fat: Number,
         carbohydrates: Number
-    }
+    },
+    
 });
 
-module.exports = mongoose.model('FoodItem', FoodItemSchema)
+module.exports = mongoose.model('Food', FoodSchema)

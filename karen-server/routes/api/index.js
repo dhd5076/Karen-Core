@@ -4,7 +4,8 @@ var response = require('../../utils/response');
 
 var hueRouter = require('./hue');
 var foodRouter = require('./food');
-var spotifyRouter = require('./spotify');
+var userRouter = require('./user');
+var musicRouter = require('./music');
 var bankingRouter = require('./banking');
 var discordRouter = require('./discord');
 
@@ -12,7 +13,8 @@ var router = express.Router();
 
 router.use('/hue', hueRouter);
 router.use('/food', foodRouter);
-router.use('/spotify', spotifyRouter);
+router.use('/user', userRouter);
+router.use('/spotify', musicRouter);
 router.use('/banking', bankingRouter);
 router.use('/discord', discordRouter);
 

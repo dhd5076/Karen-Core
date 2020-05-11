@@ -10,7 +10,7 @@ var request = require('request');
 /**
  * Gets FoodItems by name query
  * @param {String} query The Search Query
- * @returns {FoodItem[]} The first 25 items matching 
+ * @returns {Food[]} The first 25 items matching 
 */
 module.exports.search = function(query){
     return promise = new Promise((resolve, reject) => {
@@ -21,7 +21,7 @@ module.exports.search = function(query){
 /**
  * Get Food Item
  * @param {String} id The id of the item to get 
- * @returns {FoodItem} The food item matching the id provided
+ * @returns {Foodå} The food item matching the id provided
  */
 module.exports.get = function(id) {
     var promise = new Promise((resolve, reject) => {
@@ -41,7 +41,7 @@ module.exports.delete = function(id) {
 
 /**
  * Create Food Item
- * @param {Object} foodItemData The information to create the foodItem with
+ * @param {Object} foodItemData The information to create the food with
  */
 module.exports.create = function(foodItemData) {
     return promise = new Promise((resolve, reject) => {
@@ -51,7 +51,7 @@ module.exports.create = function(foodItemData) {
 
 /**
  * Get All Food Items
- * @returns {FoodItem[]} All food items
+ * @returns {Food[]} All food items
  */
 module.exports.getAll = function() {
     return promise = new Promise((resolve, reject) => {

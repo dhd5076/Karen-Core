@@ -1,22 +1,22 @@
 /**
- * @file /spotify/ Router
+ * @file /music/ Router
  */
 
 var express = require('express');
 var logger = require('../../utils/logger');
 var response = require('../../utils/response');
-var spotifyController = require('../../controllers/spotifyController');
+var spotifyController = require('../../controllers/musicController');
 
 var router = express.Router();
 
-// GET /api/spotify/addAccount
+// GET /api/music/addAccount
 router.get('/addAccount', (req, res) => {
     spotifyController.getAuthURL().then(function(authURL){
         res.redirect(authURL);
     });
 });
 
-// GET /api/spotify/authCB
+// GET /api/music/authorize
 router.get('/authorize', (req, res) => {
     spotifyController.authorizeAccount(req.query.code)
     .then(() => {
@@ -28,7 +28,7 @@ router.get('/authorize', (req, res) => {
     })
 });
 
-// GET /api/spotify/getPlaybackState
+// GET /api/music/getPlaybackState
 router.get('/getPlaybackState', (req, res) => {
     spotifyController.getPlaybackStatus()
     .then((playbackState) => {
@@ -40,7 +40,7 @@ router.get('/getPlaybackState', (req, res) => {
     });
 });
 
-// POST /api/spotify/skipForward
+// POST /api/music/skipForward
 router.post('/skipForward', (req, res) => {
     spotifyController.skipForward()
     .then(() => {
@@ -52,7 +52,7 @@ router.post('/skipForward', (req, res) => {
     });
 });
 
-// POST /api/spotify/skipBackward
+// POST /api/music/skipBackward
 router.post('/skipBackward', (req, res) => {
     spotifyController.skipBackward()
     .then(() => {
@@ -64,7 +64,7 @@ router.post('/skipBackward', (req, res) => {
     });
 });
 
-// POST /api/spotify/pause
+// POST /api/music/pause
 router.post('/pause', (req, res) => {
         spotifyController.pauseMusic()
         .then(() => {
@@ -76,7 +76,7 @@ router.post('/pause', (req, res) => {
         })
 });
 
-// POST /spotify/play
+// POST /music/play
 router.post('/play', (req, res) => {
     spotifyController.playMusic()
         .then(() => {

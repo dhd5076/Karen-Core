@@ -8,10 +8,6 @@ var UserSchema = mongoose.Schema({
         type: Schema.Types.ObjectId,
         auto: true
     },
-    username: {
-        type: String,
-        required: [true, 'Username Required']
-    },
     firstname: {
         type: String,
         required: [true, 'First Name Required']

@@ -1,83 +1,117 @@
 var User = require('../models/user');
 var config = require('../config')
 
-exports.login = function(req, res) {
-    if(req.body.username == config.karen_creds.username &&
-       req.body.password == config.karen_creds.password) {
-        user.comparePassword(req.body.password, function(err, isMatch) {
-            if(err) {
-                console.log(err);
-            }
-            if(isMatch) {
-                req.session.user = user;
-                req.session.save();
-                exports.getUsers(function(users) {
-                    res.redirect('/');
-                });
-                req.session.user = user;
-                req.session.save();
+/**
+ * Authenticates a user
+ * @param {String} username The username to auth with
+ * @param {String} password The password to auth with
+ * @returns {String} API Auth Key
+ */
+exports.auth = function(username, password) {
+    return new Promise((resolve, reject) => {
+        User.findOne({username : username})
+        .then((user) => {
+            if(user) {
+                user.comparePassword((isMatch) => {
+                    if(isMatch) {
+                        resolve("Auth Key");
+                    } else {
+                        reject(new Error("Incorrect Username Or Password"));
+                    }
+                })
             } else {
-                res.render('index', {errmsg: 'Username or password were incorrect'})
+                reject(new Error("Incorrect Username Or Password"));
             }
+        })
+        .catch((error) => {
+            reject(error);
         });
-    } else {
-        res.render('index', {errmsg: 'Username or password were incorrect'});
-    }
-}
-
-exports.viewChat = function(req, res) {
-    if(req.session.user) {
-        exports.getUsers(function(users) {
-            res.render('chat', {fellas: users, username: req.session.user.username});
-        });
-    } else {
-        res.render('index');
-    }
-}
-
-exports.logout = function(req, res) {
-    req.session.destroy();
-    res.redirect('/');
-}
-
-exports.createUser = function(req, res) {
-    if( req.body.firstname &&
-        req.body.lastname &&
-        req.body.username &&
-        req.body.password ) {
-
-        User.find({username : req.body.username}, function(err, users) {
-            if(!req.body.username.includes(' ')) {
-                if(users.length == 0) {
-                    var user = new User({
-                        firstname: req.body.firstname,
-                        lastname: req.body.lastname,
-                        username: req.body.username,
-                        password: req.body.password
-                    });
-                    user.save(function(err) {
-                        res.redirect('/');
-                    });
-                } else {
-                    res.render('register', {errmsg : 'Username already exists'})
-                }
-            } else {
-                res.render('register', {errmsg : 'Illegal character in username'})
-            }
-        });
-    }
-}
-
-exports.getUsers = function(cb) {
-    User.find({}, function(err, users) {
-        cb(users);
     });
 }
 
-exports.deleteAll= function(req, res) {
-    User.find({}, function(err, users) {
-        users.forEach(function(user) {
-            user.remove();
+/**
+ * Create a new user
+ * @param {String} firstname The firstname of the user
+ * @param {String} lastname The lastname of the user
+ * @param {String} password The password of the user
+ */
+exports.create = function(firstname, lastname, password) {
+    return new Promise((resolve, reject) => {
+        var user = new User({
+            firstname: firstname,
+            lastname: lastname,
+            password: password
+        });
+        user.save()
+        .then(() => {
+            resolve();
+        })
+        .catch((error) => {
+            reject(error);
+        })
+    });
+}
+
+/**
+ * Get all users
+ * @returns {User[]} All Users
+ */
+exports.getAll = function() {
+    return new Promise((resolve, reject) => {
+        User.find({}, function(err, users) {
+            if(err) {
+                reject(err);
+            } else {
+                resolve(users);
+            }
+        });
+    });
+}
+
+/** 
+ * Get a user
+ * @param {String} id
+ * @returns {User} The user with that id
+ */
+exports.get = function() {
+    return new Promise((resolve, reject) => {
+        User.findOne({_id : id})
+        .then((user) => {
+            resolve(user);
+        })
+        .catch((error) => {
+            reject(error);
+        })
+    });
+}
+
+/**
+ * Delete a user
+ * @param {String} id The username of the user to delete
+ */
+exports.delete = function() {
+    return new Promise((resolve, reject) => {
+        User.deleteOne({_id: id})
+        .then(() => {
+            resolve();
+        })
+        .catch((error) => {
+            reject(error);
+        });
+    });
+}
+
+/**
+ * Delete all users
+ */
+exports.deleteAll = function() {
+    return new Promise((resolve, reject) => {
+        User.deleteMany({})
+        .then(() => {
+            resolve();
+        })
+        .catch((error) => {
+            reject();
         });
     });
 }

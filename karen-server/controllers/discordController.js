@@ -1,9 +1,7 @@
 var logger = require('../utils/logger');
-var replyController = require('./replyController');
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const config = require('../config');
-const GameSDK = require('discord-game');
 
 module.exports.init = function() {
     var promise = new Promise((resolve, reject) => {
@@ -21,10 +19,6 @@ module.exports.init = function() {
         }
     
         logger.log('Discord', 'Connecting to GameSDK');
-    
-        GameSDK.create('522226613857812481', true);
-        setPresence();
-        resolve();
     });
     return promise;
 }
@@ -50,32 +44,4 @@ function handleMessage(message) {
     if(!message.author.bot) {
         message.channel.send(replyController.processTextInput(message.content));
     }
-}
-
-function setPresence() {
-    const activity = {
-        details: 'Running',
-        assets: {
-          largeImage: 'karen',
-          largeText: 'Karen',
-          samllImage: 'karen',
-          smallText: 'Karen'
-        },
-        timestamps: {
-          startAt: new Date()
-        }
-    }
-
-    GameSDK.Activity
-            .update(activity)
-            .then(function() { 
-                logger.log('Discord', 'Updated Rich Presence')
-             })
-             .catch((err) => {
-                logger.error('Discord', 'Error Updating Rich presence');
-             });
-    
-    setInterval(function() {
-        GameSDK.runCallback(); // => true
-    }, 1000/60)
 }

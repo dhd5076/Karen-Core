@@ -5,7 +5,7 @@
  var express = require('express');
  var response = require('../../utils/response');
  var logger = require('../../utils/logger');
- var plaidController = require('../../controllers/plaidController');
+ var moneyController = require('../../controllers/moneyController');
  var router = express.Router();
 
 // POST /api/banking/addBankAccount

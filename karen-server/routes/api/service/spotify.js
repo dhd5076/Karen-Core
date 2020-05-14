@@ -3,9 +3,9 @@
  */
 
 var express = require('express');
-var logger = require('../../utils/logger');
-var response = require('../../utils/response');
-var spotifyController = require('../../controllers/musicController');
+var logger = require('../../../utils/logger');
+var response = require('../../../utils/response');
+var spotifyController = require('../../../controllers/spotifyController');
 
 var router = express.Router();
 

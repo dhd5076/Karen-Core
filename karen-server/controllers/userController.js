@@ -1,5 +1,9 @@
-var User = require('../models/user');
-var config = require('../config')
+/**
+ * @file Controls Users
+ */
+
+var User = require('../models/User');
+var randomstring = require('randomstring');
 
 /**
  * Authenticates a user
@@ -14,7 +18,7 @@ exports.auth = function(username, password) {
             if(user) {
                 user.comparePassword((isMatch) => {
                     if(isMatch) {
-                        resolve("Auth Key");
+                        resolve(user.api_key);
                     } else {
                         reject(new Error("Incorrect Username Or Password"));
                     }
@@ -31,16 +35,19 @@ exports.auth = function(username, password) {
 
 /**
  * Create a new user
+ * @param {String} username The username of the user
  * @param {String} firstname The firstname of the user
  * @param {String} lastname The lastname of the user
  * @param {String} password The password of the user
  */
-exports.create = function(firstname, lastname, password) {
+exports.create = function(username, firstname, lastname, password) {
     return new Promise((resolve, reject) => {
         var user = new User({
+            username: username,
             firstname: firstname,
             lastname: lastname,
-            password: password
+            password: password,
+            api_key: randomstring.generate(32)
         });
         user.save()
         .then(() => {

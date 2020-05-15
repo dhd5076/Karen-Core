@@ -11,6 +11,7 @@ var moduleController = require('./controllers/moduleController');
 var indexRouter = require('./routes');
 var colors = require('colors');
 var fs = require('fs');
+var auth = require('./middleware/auth')
 var logger = require('./utils/logger');
 
 console.log('\033[2J');
@@ -26,6 +27,13 @@ logger.log('Karen', 'Starting up...');
 
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
+
+process.on('unhandledRejection', (reason, p) => {
+    console.log('=== UNHANDLED REJECTION ===');
+    console.dir(reason);
+});
+
+app.use(auth)
 
 app.use('/', express.static(__dirname + '/public'));
 

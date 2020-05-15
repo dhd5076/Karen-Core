@@ -46,6 +46,7 @@
     "pug": "^2.0.3",
     "puppeteer": "^2.1.1",
     "querystring": "^0.2.0",
+    "randomstring": "^1.1.5",
     "reddit": "^1.0.3",
     "reddit-wrapper-v2": "^1.1.6",
     "request": "^2.88.2",

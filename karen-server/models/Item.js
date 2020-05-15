@@ -1,5 +1,8 @@
+/**
+ *@file Item Model 
+ */
+
 var mongoose = require('mongoose');
-var bcrypt = require('bcrypt');
 var Property = require('./Item');
 
 var Schema = mongoose.Schema;

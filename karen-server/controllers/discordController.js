@@ -1,7 +1,6 @@
 var logger = require('../utils/logger');
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const config = require('../config');
 
 module.exports.init = function() {
     var promise = new Promise((resolve, reject) => {
@@ -11,14 +10,13 @@ module.exports.init = function() {
     
         client.on('message', handleMessage);
 
-        try {
-            client.login(config.discord_key);
-        } catch {
-            logger.error('Discord', 'Failed To Connect To Discord');
-            reject();
-        }
-    
-        logger.log('Discord', 'Connecting to GameSDK');
+        client.login("DISCORD_KEY")
+        .then(() => {
+
+        })
+        .catch((error) => {
+            logger.error('Discord', 'Failed To Connect To Discord : ' + error.message);
+        })
     });
     return promise;
 }

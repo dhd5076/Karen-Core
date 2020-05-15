@@ -1,7 +1,10 @@
+/**
+ * @file Container Model
+ */
+
 var mongoose = require('mongoose');
-var bcrypt = require('bcrypt');
 var Item = require('./Item');
-var Property = require('./Poperty');
+var Property = require('./Property');
 
 var Schema = mongoose.Schema;
 

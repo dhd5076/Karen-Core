@@ -1,12 +1,20 @@
+/**
+ * @file User Model
+ */
+
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 
 var Schema = mongoose.Schema;
 
 var UserSchema = mongoose.Schema({
-    _id: {
+    id: {
         type: Schema.Types.ObjectId,
         auto: true
+    },
+    username: {
+        type: String,
+        required: [true, 'Username Required']
     },
     firstname: {
         type: String,
@@ -19,6 +27,10 @@ var UserSchema = mongoose.Schema({
     password: {
         type: String,
         required: [true, 'Password Required']
+    },
+    api_key: {
+        type: String,
+        require: [true, 'api_key required']
     }
 });
 

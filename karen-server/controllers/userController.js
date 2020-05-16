@@ -39,6 +39,7 @@ exports.auth = function(username, password) {
  * @param {String} firstname The firstname of the user
  * @param {String} lastname The lastname of the user
  * @param {String} password The password of the user
+ * @returns {String} The id of the user created
  */
 exports.create = function(username, firstname, lastname, password) {
     return new Promise((resolve, reject) => {
@@ -51,7 +52,7 @@ exports.create = function(username, firstname, lastname, password) {
         });
         user.save()
         .then(() => {
-            resolve();
+            resolve(user.id);
         })
         .catch((error) => {
             reject(error);
@@ -80,10 +81,11 @@ exports.getAll = function() {
  * @param {String} id
  * @returns {User} The user with that id
  */
-exports.get = function() {
+exports.get = function(id) {
     return new Promise((resolve, reject) => {
-        User.findOne({_id : id})
+        User.findOne({ id : id })
         .then((user) => {
+            console.log(user)
             resolve(user);
         })
         .catch((error) => {
@@ -96,9 +98,9 @@ exports.get = function() {
  * Delete a user
  * @param {String} id The username of the user to delete
  */
-exports.delete = function() {
+exports.delete = function(id) {
     return new Promise((resolve, reject) => {
-        User.deleteOne({_id: id})
+        User.deleteOne({ id: id })
         .then(() => {
             resolve();
         })

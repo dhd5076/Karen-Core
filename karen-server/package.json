@@ -26,7 +26,6 @@
     "colors": "^1.4.0",
     "csr-gen": "^0.2.1",
     "death": "^1.1.0",
-    "discord-game": "^0.1.1",
     "discord-rich-presence": "0.0.7",
     "discord-rpc": "^3.1.0",
     "discord.js": "^12.1.1",

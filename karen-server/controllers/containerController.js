@@ -3,6 +3,7 @@
  */
 var logger = require('../utils/logger');
 var Container = require('../models/Container');
+var Item = require('../models/Item');
 
 /**
  * Get all containers
@@ -72,7 +73,7 @@ module.exports.getByType = function(type) {
 }
 
 /**
- * Create Container
+ * Create container
  * @param {String} name Container name
  * @param {String} type Container type
  */
@@ -97,8 +98,20 @@ module.exports.create = function(name, type) {
 }
 
 /**
- * Delete Container  
+ * Delete container
+ * @param {string} id Container id
  */ 
+module.exports.delete = function(id) {
+    return new Promise((resolve, reject) => {
+        Container.deleteOne({ id : id})
+        .then(() => {
+            resolve();
+        })
+        .catch((error) => {
+            reject(error);
+        });
+    });
+}
 
 /**
  * Get property of a container
@@ -107,7 +120,7 @@ module.exports.create = function(name, type) {
  */
 module.exports.getProperty = function(id, property) {
     return new Promise((resolve, reject) => {
-        Property.findOne({ id : id})
+        Container.findOne({ id : id})
         .then((container) => {
             if(container) {
                 if(container.properties.hasOwnProperty(property)) {
@@ -125,18 +138,16 @@ module.exports.getProperty = function(id, property) {
 
 /**
  * Set property of a container 
+ * @param {String} id Container id
+ * @param {String} property The name of the property to set
  */
 module.exports.setProperty = function(id, property) {
     return new Promise((resolve, reject) => {
         Container.findOne({ id : id})
         .then((container) => {
             if(container) {
-                if(container.properties.hasOwnProperty(property)) {
-                    container.properties[property] = value;
-                    resolve();
-                } else {
-                    reject(new Error(`Container with id ${id} has no property ${property}`));
-                }
+                container.properties[property] = value;
+                resolve();
             } else {
                 reject(new Error(`No container with id ${id}`));
             }
@@ -145,15 +156,118 @@ module.exports.setProperty = function(id, property) {
             reject(new Error(error));
         });
     });
+}
 
 /**
- * Add Item To Container
+ * Add item to container
+ * @param {String} id Container ID to add item to
+ * @param {String} item ID of the item to add to container
  */
+module.exports.addItem = function(id, item) {
+    return new Promise((resolve, reject) => {
+        Container.findOne({ id : id})
+        .then((container) => {
+            if(container) {
+                Item.findOne({ id : item})
+                .then((item) => {
+                    if(item) {
+                        container.items.push(item);
+                        resolve();
+                    } else {
+                        reject(new Error(`No item with id ${id}`))
+                    }
+                })
+            } else {
+                reject(new Error(`No container with id ${id}`));
+            }
+        })
+        .catch((error) => {
+            reject(error);
+        });
+    });
+}
 
 /**
- * Remove Item From Container
+ * Remove item from container
+ * @param {String} id Container ID to remove item from
+ * @param {String} item ID of the item to remove from the container
  */
+module.exports.removeItem = function(id, item) {
+    return new Promise((resolve, reject) => {
+        Container.findOne({ id : id})
+        .then((container) => {
+            if(container) {
+                Item.findOne({ id : item})
+                .then((item) => {
+                    if(item) {
+                        reject(new Error(`Container.removeItem Endpoint Not Implemented`))
+                    } else {
+                        reject(new Error(`No item with id ${id}`));
+                    }
+                })
+            } else {
+                reject(new Error(`No container with id ${id}`));
+            }
+        })
+        .catch((error) => {
+            reject(error);
+        })
+    });
+}
 
 /**
- * dasd
+ * Add container to container
+ * @param {String} id Container ID to add item to
+ * @param {String} item ID of the container to add to container
  */
+module.exports.addContainer = function(id, container) {
+    return new Promise((resolve, reject) => {
+        Container.findOne({ id : id})
+        .then((container) => {
+            if(container) {
+                Item.findOne({ id : item})
+                .then((item) => {
+                    if(item) {
+                        container.items.push(item);
+                        resolve();
+                    } else {
+                        reject(new Error(`No item with id ${id}`))
+                    }
+                })
+            } else {
+                reject(new Error(`No container with id ${id}`));
+            }
+        })
+        .catch((error) => {
+            reject(error);
+        });
+    });
+}
+
+/**
+ * Remove container from container
+ * @param {String} id Container ID to remove item from
+ * @param {String} container ID of the container to remove from the container
+ */
+module.exports.removeContainer = function (id, container) {
+    return new Promise((resolve, reject) => {
+        Container.findOne({ id : id})
+        .then((container) => {
+            if(container) {
+                Item.findOne({ id : item})
+                .then((item) => {
+                    if(item) {
+                        reject(new Error(`Container.removeContainer Not Implemented`))
+                    } else {
+                        reject(new Error(`No item with id ${id}`));
+                    }
+                })
+            } else {
+                reject(new Error(`No container with id ${id}`));
+            }
+        })
+        .catch((error) => {
+            reject(error);
+        })
+    });
+}

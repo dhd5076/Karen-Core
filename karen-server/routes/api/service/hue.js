@@ -4,8 +4,8 @@
 
 var express = require('express');
 var hueController = require('../../controllers/hueController');
-var response = require('../../utils/response');
-var logger = require('../../utils/logger');
+var response = require('../../../utils/response');
+var logger = require('../../../utils/logger');
 
 var router = express.Router();
 

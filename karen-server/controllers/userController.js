@@ -3,6 +3,7 @@
  */
 
 var User = require('../models/User');
+var Container = require('../models/Container');
 var randomstring = require('randomstring');
 
 /**
@@ -48,7 +49,14 @@ exports.create = function(username, firstname, lastname, password) {
             firstname: firstname,
             lastname: lastname,
             password: password,
-            api_key: randomstring.generate(32)
+            api_key: randomstring.generate(32),
+            root_container: new Container({
+                type: "Root",
+                name: "Root",
+                containers: [],
+                items: [],
+                properties: []
+            })
         });
         user.save()
         .then(() => {
@@ -59,6 +67,11 @@ exports.create = function(username, firstname, lastname, password) {
         })
     });
 }
+
+/**
+ * Get user's root container
+ */
+
 
 /**
  * Get all users

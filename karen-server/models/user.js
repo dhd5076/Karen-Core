@@ -3,6 +3,7 @@
  */
 
 var mongoose = require('mongoose');
+var Container = require('./Container');
 var bcrypt = require('bcrypt');
 
 var Schema = mongoose.Schema;

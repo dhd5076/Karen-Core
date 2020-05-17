@@ -8,7 +8,7 @@ var Property = require('./Item');
 var Schema = mongoose.Schema;
 
 var ItemSchema = mongoose.Schema({
-    _id: {
+    id: {
         type: Schema.Types.ObjectId,
         auto: true
     },
@@ -21,7 +21,7 @@ var ItemSchema = mongoose.Schema({
       require: true  
     },
     properties: {
-        type: [Property],
+        type: Object,
         require: false
     }
 });

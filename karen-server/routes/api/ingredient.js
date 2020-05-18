@@ -23,9 +23,9 @@ router.post('/', (req, res) => {
 // GET /api/item
 router.get('/', (req, res) => {
     if(req.isAuthenticated) {
-        userController.getAll()
-        .then((users) => {
-            res.send(response.generate(users, null))
+        itemController.getAll()
+        .then((items) => {
+            res.send(response.generate(items, null))
         })
         .catch((error) => {
             res.send(response.generate(null, error))

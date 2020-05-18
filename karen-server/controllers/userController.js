@@ -3,7 +3,6 @@
  */
 
 var User = require('../models/User');
-var Container = require('../models/Container');
 var randomstring = require('randomstring');
 
 /**
@@ -67,11 +66,6 @@ exports.create = function(username, firstname, lastname, password) {
         })
     });
 }
-
-/**
- * Get user's root container
- */
-
 
 /**
  * Get all users

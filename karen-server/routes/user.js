@@ -2,9 +2,9 @@
  * @file /music/ Router
  */
 var express = require('express');
-var logger = require('../../utils/logger');
-var response = require('../../utils/response');
-var userController = require('../../controllers/userController');
+var logger = require('../utils/logger');
+var response = require('../utils/response');
+var userController = require('../controllers/userController');
 
 var router = express.Router();
 

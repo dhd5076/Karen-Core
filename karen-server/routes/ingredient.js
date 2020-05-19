@@ -2,30 +2,37 @@
  * @file /api/item Router
  */
 var express = require('express');
-var logger = require('../../utils/logger');
-var response = require('../../utils/response');
-var itemController = require('../../controllers/itemController');
+var logger = require('../utils/logger');
+var response = require('../utils/response');
+var ingredientController = require('../../controllers/ingredientController');
 
 var router = express.Router();
 
-// POST /api/item
+// POST /api/ingredient
 router.post('/', (req, res) => {
-    itemController.create(req.body.type, req.body.name)
-    .then((id) => {
-        res.send(response.generate(id, null))
-        logger.info('User', "Created New User: " + req.body.firstname + " " + req.body.lastname)
-    })
-    .catch((error) => {
-        res.send(response.generate(null, error.message));
-    })
+    if(req.isAuthenticated) {
+        ingredientController.create(
+            req.body.name,
+            req.body.unit, 
+            req.body.calories, 
+            req.body.protein, 
+            req.bpdy.fat, 
+            req.body.carbs)
+        .then((id) => {
+            res.send(response.generate(id, null))
+        })
+        .catch((error) => {
+            res.send(response.generate(null, error.message));
+        });
+    }
 });
 
 // GET /api/item
 router.get('/', (req, res) => {
     if(req.isAuthenticated) {
-        itemController.getAll()
-        .then((items) => {
-            res.send(response.generate(items, null))
+        ingredienController.getAll()
+        .then((ingredients) => {
+            res.send(response.generate(ingredients, null));
         })
         .catch((error) => {
             res.send(response.generate(null, error))

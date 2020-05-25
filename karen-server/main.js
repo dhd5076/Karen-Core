@@ -32,7 +32,6 @@ process.on('unhandledRejection', (reason, p) => {
     console.dir(reason);
 });
 
-app.use(auth)
 
 app.use('/', express.static(__dirname + '/public'));
 
@@ -49,6 +48,8 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+
+app.use(auth)
 
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());

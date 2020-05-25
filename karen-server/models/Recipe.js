@@ -1,29 +1,32 @@
 /**
- *@file Item Model 
+ *@file Recipe Model 
  */
 
 var mongoose = require('mongoose');
-var Property = require('./Item');
+var Ingredient = require('./Ingredient');
+var User = require('./User');
 
 var Schema = mongoose.Schema;
 
-var ItemSchema = mongoose.Schema({
+var RecipeSchema = mongoose.Schema({
     id: {
         type: Schema.Types.ObjectId,
         auto: true
     },
-    type: {
-        type: String,
-        require: true
-    },
-    name: {
-      type: String,
-      require: true  
-    },
-    properties: {
-        type: Object,
-        require: false
-    }
+    name: String,
+    author: String,
+    servings : Number,
+    calories : Number,
+    protein : Number,
+    fat : Number, 
+    carbs : Number,
+    ingredients :[{
+        ingredient: {
+            type: mongoose.Schema.Types.ObjectId, ref: 'Ingredient'
+        },
+        amount: Number
+    }],
+    steps: [String]
 });
 
-module.exports = mongoose.model('Item', ItemSchema);
+module.exports = mongoose.model('Recipe', RecipeSchema);

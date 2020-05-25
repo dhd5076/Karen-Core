@@ -21,7 +21,7 @@ var logger = require('../utils/logger');
             res.send(response.generate(null, error.message));
         })
     } else {
-        req.isAuthenticated = false;
+        req.isAuthenticated = req.session.hasOwnProperty('user');
         next();
     }
 }

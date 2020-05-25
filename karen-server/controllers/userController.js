@@ -7,27 +7,32 @@ var randomstring = require('randomstring');
 
 /**
  * Authenticates a user
- * @param {String} username The username to auth with
- * @param {String} password The password to auth with
- * @returns {String} API Auth Key
+ * @param {String} username User Username
+ * @param {String} password User Password
+ * @returns {User} The Authenticated User Object
  */
 exports.auth = function(username, password) {
     return new Promise((resolve, reject) => {
         User.findOne({username : username})
         .then((user) => {
             if(user) {
-                user.comparePassword((isMatch) => {
+                user.comparePassword(password)
+                .then((isMatch) => {
                     if(isMatch) {
                         resolve(user.api_key);
                     } else {
                         reject(new Error("Incorrect Username Or Password"));
                     }
                 })
+                .catch((error) => {
+                    reject(error);
+                })
             } else {
                 reject(new Error("Incorrect Username Or Password"));
             }
         })
         .catch((error) => {
+            console.log(error);
             reject(error);
         });
     });
@@ -48,14 +53,7 @@ exports.create = function(username, firstname, lastname, password) {
             firstname: firstname,
             lastname: lastname,
             password: password,
-            api_key: randomstring.generate(32),
-            root_container: new Container({
-                type: "Root",
-                name: "Root",
-                containers: [],
-                items: [],
-                properties: []
-            })
+            api_key: randomstring.generate(32)
         });
         user.save()
         .then(() => {

@@ -12,6 +12,18 @@ var colors = require('colors');
 var fs = require('fs');
 var auth = require('./middleware/auth')
 var logger = require('./utils/logger');
+var ChromecastAPI = require('chromecast-api')
+
+client = new ChromecastAPI();
+
+client.on('device', function (device) {
+    console.log(device);
+    var mediaURL = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4';
+   
+    device.play(mediaURL, function (err) {
+      if (!err) console.log('Playing in your chromecast')
+    })
+  })
 
 console.log('\033[2J');
 var nameplate = '  _  __    \n' +

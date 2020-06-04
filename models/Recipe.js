@@ -16,10 +16,6 @@ var RecipeSchema = mongoose.Schema({
     name: String,
     author: String,
     servings : Number,
-    calories : Number,
-    protein : Number,
-    fat : Number, 
-    carbs : Number,
     ingredients :[{
         ingredient: {
             type: mongoose.Schema.Types.ObjectId, ref: 'Ingredient'

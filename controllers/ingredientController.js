@@ -53,7 +53,7 @@ module.exports.getAll = function() {
 /**
  * Get ingredient by id
  * @param {String} id Ingredient id
- * @returns {Ingrdient} The ingredient with the specified id
+ * @returns {Ingredient} The ingredient with the specified id
  */
 module.exports.get = function(id) {
     return new Promise((resolve, reject) => {

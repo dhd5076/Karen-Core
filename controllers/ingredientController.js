@@ -51,9 +51,9 @@ module.exports.getAll = function() {
 }
 
 /**
- * Get item by id
- * @param {String} id Item type
- * @returns {Item} The item with the specified id
+ * Get ingredient by id
+ * @param {String} id Ingredient id
+ * @returns {Ingrdient} The ingredient with the specified id
  */
 module.exports.get = function(id) {
     return new Promise((resolve, reject) => {
@@ -71,66 +71,14 @@ module.exports.get = function(id) {
     });
 }
 
-/**
- * Get item by name
- * @param {String} name Item name
- * @returns {Item} The items with the specified name
- */
-module.exports.getByName = function(name) {
-    return new Promise((resolve, reject) => {
-        Item.find({ name : name})
-        .then((items) => {
-            resolve(items);
-        })
-        .catch((error) => {
-            reject(error);
-        })
-    });
-}
 
 /**
- * Get item by type
- * @param {String} type Item type
- * @returns {Item} The items with the specified type
- */
-module.exports.getByType = function(type) {
-    return new Promise((resolve, reject) => {
-        Item.find({ type: type })
-        .then((items) => {
-            resolve(items);
-        })
-        .catch((error) => {
-            reject(error);
-        })
-    });
-}
-
-/**
- * Set item property
- * @param {String} id Item id to set property of 
- * @param {String} property The property of the item to set
- * @param {String} value The value to set the property to
- */
-module.exports.setProperty = function(id, property, value) {
-    return new Promise((resolve, reject) => {
-        Item.findOne({})
-        .then((item) => {
-            item.properties[property] = value;
-            resolve();
-        })
-        .catch((error) => {
-            reject(error);
-        })
-    });
-}
-
-/**
- * Delete item by id
- * @param {String} id The id of the item to delete
+ * Delete ingredient by id
+ * @param {String} id The id of the ingredient to delete
  */
 module.exports.delete = function(id) {
     return new Promise((resolve, reject) => {
-        Item.deleteOne({ id: id})
+        Ingredient.deleteOne({ _id: id})
         .then(() => {
             resolve();
         })

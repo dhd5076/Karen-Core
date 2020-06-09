@@ -4,6 +4,7 @@
   "description": "A Smart Recipe Manager",
   "main": "main.js",
   "dependencies": {
+    "@google-cloud/text-to-speech": "^3.0.0",
     "bcrypt": "^4.0.1",
     "bindings": "^1.5.0",
     "chromecast-api": "^0.3.3",

@@ -1,5 +1,5 @@
 /**
- * @file /music/ Router
+ * @file /user/ Router
  */
 var express = require('express');
 var logger = require('../utils/logger');
@@ -8,7 +8,7 @@ var userController = require('../controllers/userController');
 
 var router = express.Router();
 
-// GET /api/user
+// GET /user
 router.get('/', (req, res) => {
     if(req.isAuthenticated) {
         userController.getAll()
@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
     }
 });
 
-// GET /api/user/:id
+// GET /user/:id
 router.get('/:id', (req, res) => {
     if(req.isAuthenticated) {
         userController.get(req.params.id)
@@ -38,7 +38,7 @@ router.get('/:id', (req, res) => {
     }
 });
 
-// POST /api/user
+// POST /user
 router.post('/', (req, res) => {
     userController.create(req.body.username, req.body.firstname, req.body.lastname, req.body.password)
     .then((users) => {
@@ -50,7 +50,7 @@ router.post('/', (req, res) => {
     })
 });
 
-// POST /api/user/auth
+// POST /user/auth
 router.post('/auth', (req, res) => {
     userController.auth(req.body.username, req.body.password)
     .then((user) => {
@@ -61,7 +61,7 @@ router.post('/auth', (req, res) => {
     });
 });
 
-// DELETE /api/user/:id
+// DELETE /user/:id
 router.delete('/:id', (req, res) => {
     if(req.isAuthenticated) {
         userController.delete(req.params.id)

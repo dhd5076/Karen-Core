@@ -1,5 +1,5 @@
 /**
- * @file Item Controller
+ * @file Ingredient Controller
  */
 var logger = require('../utils/logger');
 var Ingredient = require('../models/Ingredient');

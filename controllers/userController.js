@@ -1,5 +1,5 @@
 /**
- * @file Controls Users
+ * @file User Controller
  */
 
 var User = require('../models/User');
@@ -92,11 +92,9 @@ exports.get = function(id) {
     return new Promise((resolve, reject) => {
         User.findOne({ _id :  id })
         .then((user) => {
-            console.log(user)
             resolve(user);
         })
         .catch((error) => {
-            response.generate(null, error.message);
             reject(error);
         })
     });

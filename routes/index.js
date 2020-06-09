@@ -10,7 +10,7 @@ var router = express.Router();
 router.use('/user', userRouter);
 router.use('/ingredient', ingredientRouter)
 
-// GET /api/ping
+// GET /ping
 router.get('/ping', (req, res) => {
     res.send('pong');
 });

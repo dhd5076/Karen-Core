@@ -12,24 +12,22 @@ var colors = require('colors');
 var fs = require('fs');
 var auth = require('./middleware/auth')
 var logger = require('./utils/logger');
-var ChromecastAPI = require('chromecast-api')
+var telnet = require('telnet');
+var telnetController = require('./controllers/telnetController');
+var nutritionController = require('./controllers/nutritionController');
 
-client = new ChromecastAPI();
-
-client.on('device', function (device) {
-    console.log(device);
-    var mediaURL = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4';
-   
-    device.play(mediaURL, function (err) {
-      if (!err) console.log('Playing in your chromecast')
-    })
-  })
+global.config = {
+    http_port: 80,
+    https_port: 443,
+    telnet_port: 23,
+    version: 'v0.0.1'
+}
 
 console.log('\033[2J');
 var nameplate = '  _  __    \n' +
                 ' | |/ /__ _ _ _ ___ _ _ \n' +
                 ' | \' </ _` | \'_/ -_) \' \\\n' +
-                ' |_|\\\_\\\__,_|_| \___|_||_|\n' + 
+                ' |_|\\\_\\\__,_|_| \___|_||_|' + '    '  + global.config.version + '\n' +
                 '====================================='
 
 console.log(colors.green(nameplate));
@@ -76,16 +74,26 @@ mongoose.connect('mongodb://localhost/dashboard', {useNewUrlParser: true, useUni
     }
 });
 
-var port = 443;
-var port2 = 80;
-
 https.createServer({
     key: fs.readFileSync('server.key'),
     cert: fs.readFileSync('server.cert')
-  }, app)
-  .listen(port, function () {
-  });
+}, app)
+  .listen(global.config.https_port, function () {
+    logger.log('Express', 'Karen Running On Port ' + global.config.https_port);
+});
 
-  app.listen(port2, () => {
-    logger.log('Express', 'Karen Running On Port ' + port2);
-  });
+app.listen(global.config.http_port, () => {
+    logger.log('Express', 'Karen Running On Port ' + global.config.http_port);
+});
+
+logger.log('Telnet', 'Starting Server...');
+telnet.createServer(telnetController.handleClient).listen(global.config.telnet_port);
+logger.log('Telnet', 'Listening On Port ' + global.config.telnet_port);
+
+nutritionController.search("banana")
+.then((results) => {
+    nutritionController.get(results[0].resource_id)
+    .then((item) => {
+        console.log(item)
+    })
+})

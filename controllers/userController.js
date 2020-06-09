@@ -126,7 +126,7 @@ exports.deleteAll = function() {
             resolve();
         })
         .catch((error) => {
-            reject();
+            reject(error);
         });
     });
 }

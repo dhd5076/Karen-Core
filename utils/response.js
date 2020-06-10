@@ -9,7 +9,7 @@
  */
 module.exports.generate = function(content, error) {
     var APIResponse = {
-        error: error,
+        error: JSON.stringify(error),
         content: content
     }
     return APIResponse;

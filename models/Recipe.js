@@ -9,13 +9,18 @@ var User = require('./User');
 var Schema = mongoose.Schema;
 
 var RecipeSchema = mongoose.Schema({
-    id: {
-        type: Schema.Types.ObjectId,
-        auto: true
+    name: {
+        type: String,
+        required: true
     },
-    name: String,
-    author: String,
-    servings : Number,
+    author: {
+        type: String,
+        required: true
+    },
+    servings : {
+        type: Number,
+        default: 1
+    },
     ingredients :[{
         ingredient: {
             type: mongoose.Schema.Types.ObjectId, ref: 'Ingredient'

@@ -8,11 +8,7 @@ var Ingredient = require('../models/Ingredient');
 /**
  * Create Recipe
  * @param {String} name Recipe Name
- * @param {String} unit Recipe Unit
- * @param {String} calories Recipe Calories
- * @param {String} protein Recipe Protein
- * @param {String} fat Recipe Fat
- * @param {String} carbs Recipe Carbs
+ * @param {String} author Recipe Unit
  * @returns {String} The ID Of The Newly Created Recipe
  */
 module.exports.create = function(name, author) {
@@ -20,7 +16,6 @@ module.exports.create = function(name, author) {
         var recipe = new Recipe({
             name: name,
             author: author,
-            servings: -1,
             ingredients: [],
             steps: []
         })

@@ -106,7 +106,7 @@ exports.get = function(id) {
  */
 exports.delete = function(id) {
     return new Promise((resolve, reject) => {
-        User.deleteOne({ _id: mongoose.Types.ObjectId(id) })
+        User.deleteOne({ _id: id })
         .then(() => {
             resolve();
         })

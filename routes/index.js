@@ -4,11 +4,13 @@ var response = require('../utils/response');
 
 var userRouter = require('./user');
 var ingredientRouter = require('./ingredient');
+var recipeRouter = require('./recipe');
 
 var router = express.Router();
 
 router.use('/user', userRouter);
-router.use('/ingredient', ingredientRouter)
+router.use('/ingredient', ingredientRouter);
+router.use('/recipe', recipeRouter);
 
 // GET /ping
 router.get('/ping', (req, res) => {

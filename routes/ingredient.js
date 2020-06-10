@@ -44,7 +44,7 @@ router.get('/', (req, res) => {
     }
 });
 
-// GET /ingredient/id
+// GET /ingredient/:id
 router.get('/:id', (req, res) => {
     if(req.isAuthenticated) {
         ingredientController.get(req.params.id)
@@ -59,7 +59,7 @@ router.get('/:id', (req, res) => {
     }
 });
 
-// DELETE 
+// DELETE /ingredient
 router.delete('/:id', (req, res) => {
     if(req.isAuthenticated) {
         ingredientController.delete(req.params.id)

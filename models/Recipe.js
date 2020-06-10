@@ -20,7 +20,8 @@ var RecipeSchema = mongoose.Schema({
         ingredient: {
             type: mongoose.Schema.Types.ObjectId, ref: 'Ingredient'
         },
-        amount: Number
+        unit: String,
+        value: Number 
     }],
     steps: [String]
 });

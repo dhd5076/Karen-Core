@@ -3,6 +3,7 @@
  */
 var logger = require('../utils/logger');
 var Recipe = require('../models/Recipe');
+var Ingredient = require('../models/Ingredient');
 
 /**
  * Create Recipe
@@ -71,6 +72,41 @@ module.exports.get = function(id) {
     });
 }
 
+/**
+ * Add ingredient to recipe
+ * @param recipeID the id of the recipe to add the ingredient to
+ * @param ingredientID the id of the ingredient to add to the recipe
+ * @param unit The units to use for measuring the ingredient
+ * @param value the number of units of the ingredient
+ */
+module.exports.addIngredient = function(recipeID, ingredientID, unit, value) {
+    return new Promise((resolve, reject) => {
+        var recipe;
+        var ingredient;
+        Promise.all([
+            Recipe.findById(recipeID),
+            Ingredient.findById(ingredientID)
+        ])
+        .then((data) => {
+            var recipe = data[0];
+            var ingredient = data[1]
+            recipe.ingredients.push({
+                ingredient,
+                unit: unit,
+                value, value
+            })
+            try {
+                recipe.save()
+                .then(resolve);
+            } catch (error) {
+                reject(error)
+            }
+        })
+        .catch((error) => {
+            reject(error);
+        })
+    });
+}
 
 /**
  * Delete recipe by id

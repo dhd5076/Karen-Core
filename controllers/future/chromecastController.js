@@ -1,8 +1,0 @@
-client.on('device', function (device) {
-    console.log(device);
-    var mediaURL = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4';
-   
-    device.play(mediaURL, function (err) {
-      if (!err) console.log('Playing in your chromecast')
-    })
-  })

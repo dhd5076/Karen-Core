@@ -74,14 +74,6 @@ mongoose.connect('mongodb://localhost/dashboard', {useNewUrlParser: true, useUni
     }
 });
 
-https.createServer({
-    key: fs.readFileSync('server.key'),
-    cert: fs.readFileSync('server.cert')
-}, app)
-  .listen(global.config.https_port, function () {
-    logger.log('Express', 'Karen Running On Port ' + global.config.https_port);
-});
-
 app.listen(global.config.http_port, () => {
     logger.log('Express', 'Karen Running On Port ' + global.config.http_port);
 });
@@ -89,11 +81,3 @@ app.listen(global.config.http_port, () => {
 logger.log('Telnet', 'Starting Server...');
 telnet.createServer(telnetController.handleClient).listen(global.config.telnet_port);
 logger.log('Telnet', 'Listening On Port ' + global.config.telnet_port);
-
-nutritionController.search("banana")
-.then((results) => {
-    nutritionController.get(results[0].resource_id)
-    .then((item) => {
-        console.log(item)
-    })
-})

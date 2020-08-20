@@ -5,7 +5,7 @@
   "main": "main.js",
   "dependencies": {
     "@google-cloud/text-to-speech": "^3.0.0",
-    "bcrypt": "^4.0.1",
+    "bcrypt": "^5.0.0",
     "bindings": "^1.5.0",
     "chromecast": "0.0.6",
     "chromecast-api": "^0.3.3",
